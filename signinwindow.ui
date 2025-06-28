@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>564</width>
-    <height>451</height>
+    <width>558</width>
+    <height>486</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Sign In</string>
   </property>
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
@@ -19,12 +19,12 @@
      <x>170</x>
      <y>20</y>
      <width>222</width>
-     <height>376</height>
+     <height>404</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QLabel" name="label">
+     <widget class="QLabel" name="signinlbl">
       <property name="styleSheet">
        <string notr="true">color:white;
 font-family:Rokh;
@@ -42,7 +42,7 @@ padding:10px;</string>
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="lineEdit">
+     <widget class="QLineEdit" name="name">
       <property name="styleSheet">
        <string notr="true">width:200px;
 background-color:darkorange;
@@ -58,7 +58,7 @@ border:2px solid black;</string>
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="lineEdit_6">
+     <widget class="QLineEdit" name="username">
       <property name="styleSheet">
        <string notr="true">width:200px;
 background-color:darkorange;
@@ -77,7 +77,7 @@ border:2px solid black;</string>
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="lineEdit_7">
+     <widget class="QLineEdit" name="email">
       <property name="styleSheet">
        <string notr="true">width:200px;
 background-color:darkorange;
@@ -93,7 +93,7 @@ border:2px solid black;</string>
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="lineEdit_8">
+     <widget class="QLineEdit" name="password">
       <property name="styleSheet">
        <string notr="true">width:200px;
 background-color:darkorange;
@@ -109,7 +109,7 @@ border:2px solid black;</string>
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="lineEdit_9">
+     <widget class="QLineEdit" name="password2">
       <property name="styleSheet">
        <string notr="true">width:200px;
 background-color:darkorange;
@@ -125,7 +125,7 @@ border:2px solid black;</string>
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="submit">
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
@@ -155,14 +155,14 @@ border-radius:10px;
      <x>-1</x>
      <y>-21</y>
      <width>571</width>
-     <height>491</height>
+     <height>511</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: qlineargradient(
     x1:0, y1:0, x2:1, y2:0,
-    stop:0 #ff0f7b,
-    stop:1 #f89b29
+    stop:0 #000,
+    stop:1 #ff0f7b
 );
 </string>
    </property>

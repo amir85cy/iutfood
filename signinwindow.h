@@ -6,7 +6,7 @@
 namespace Ui {
 class Signinwindow;
 }
-
+void errormsg();
 class Signinwindow : public QWidget
 {
     Q_OBJECT

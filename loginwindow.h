@@ -6,7 +6,7 @@
 namespace Ui {
 class LoginWindow;
 }
-
+void errormsg(const QString &matn);
 class LoginWindow : public QWidget
 {
     Q_OBJECT

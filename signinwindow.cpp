@@ -104,7 +104,6 @@ Signinwindow::Signinwindow(QWidget *parent)
         firstwin->show();
         this->close();
     });
-    successmsg("ثبت‌نام با موفقیت انجام شد 🎉");
     // ذخیره ی اطلاعات
     ui->password->setEchoMode(QLineEdit::Password);
     ui->password2->setEchoMode(QLineEdit::Password);
@@ -183,11 +182,12 @@ Signinwindow::Signinwindow(QWidget *parent)
             return;
         }
         QSqlQuery insertQuery;
-        insertQuery.prepare("INSERT INTO users (name, username, password, email) VALUES (:name, :username, :password, :email)");
+        insertQuery.prepare("INSERT INTO users (name, username, password, email , status) VALUES (:name, :username, :password, :email , :status)");
         insertQuery.bindValue(":name", name);
         insertQuery.bindValue(":username", username);
         insertQuery.bindValue(":password", password);
         insertQuery.bindValue(":email", email);
+        insertQuery.bindValue(":status", 0);
 
 
         if (insertQuery.exec()) {

@@ -38,7 +38,16 @@ LoginWindow::LoginWindow(QWidget *parent)
         query.bindValue(":password", inputPassword);
 
         if (query.exec() && query.next()) {
-            QMessageBox::information(this, "موفق", "ورود موفقیت‌آمیز بود!");
+            int status = query.value("status").toInt();
+            if(status == 0){
+                QMessageBox::information(this, "موفق", "ورود موفقیت‌آمیز بود!");
+            }
+            if(status == 1){
+                QMessageBox::information(this, "موفق", "ورود ادمین موفقیت‌آمیز بود!");
+            }
+            if(status == 2){
+                QMessageBox::information(this, "موفق", "ورود  رستوراندار موفقیت‌آمیز بود!");
+            }
         } else {
             errormsg("نام کاربری یا رمز عبور اشتباه است !");
         }

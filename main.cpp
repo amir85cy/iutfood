@@ -25,18 +25,19 @@ void createUserTable() {
             name TEXT,
             username TEXT PRIMARY KEY,
             password TEXT,
-            email TEXT
+            email TEXT,
+            status INT
         )
     )");
 
     query.exec(R"(
-        INSERT OR IGNORE INTO users (name, username, password, email)
-        VALUES ('ادمین اصلی', 'admin', '1234', 'admin@example.com')
+        INSERT OR IGNORE INTO users (name, username, password, email , status)
+        VALUES ('ادمین اصلی', 'admin', '1234', 'admin@example.com' , '1')
     )");
 
     query.exec(R"(
-        INSERT OR IGNORE INTO users (name, username, password, email)
-        VALUES ('امیررضا', 'amir', '5678', 'amir@example.com')
+        INSERT OR IGNORE INTO users (name, username, password, email , status)
+        VALUES ('امیررضا', 'amir', '5678', 'amir@example.com' , '2')
     )");
 
     db.close();

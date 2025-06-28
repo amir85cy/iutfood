@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>527</height>
+    <height>545</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -112,15 +112,15 @@ text-align:center;</string>
    <widget class="QFrame" name="frame">
     <property name="geometry">
      <rect>
-      <x>9</x>
+      <x>-11</x>
       <y>-1</y>
-      <width>781</width>
-      <height>521</height>
+      <width>811</width>
+      <height>511</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color : qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(25, 25, 255, 255));
-z-index:-1;</string>
+</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::Shape::StyledPanel</enum>

@@ -8,6 +8,7 @@ IUTFood::IUTFood(QWidget *parent)
     , ui(new Ui::IUTFood)
 {
     ui->setupUi(this);
+    this->setFixedSize(800, 500);
     connect(ui->gotologin, &QPushButton::clicked, this, [=]() {
         LoginWindow *loginWin = new LoginWindow();
         loginWin->setAttribute(Qt::WA_DeleteOnClose);

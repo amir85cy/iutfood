@@ -98,6 +98,7 @@ Signinwindow::Signinwindow(QWidget *parent)
     , ui(new Ui::Signinwindow)
 {
     ui->setupUi(this);
+    this->setFixedSize(800, 500);
     connect(ui->backbtn, &QPushButton::clicked, this, [=]() {
         IUTFood *firstwin = new IUTFood();
         firstwin->setAttribute(Qt::WA_DeleteOnClose);

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>558</width>
-    <height>486</height>
+    <width>800</width>
+    <height>500</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,8 +16,8 @@
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>170</x>
-     <y>20</y>
+     <x>100</x>
+     <y>30</y>
      <width>222</width>
      <height>404</height>
     </rect>
@@ -26,7 +26,7 @@
     <item>
      <widget class="QLabel" name="signinlbl">
       <property name="styleSheet">
-       <string notr="true">color:white;
+       <string notr="true">color:#2f6901;
 font-family:Rokh;
 border-radius:10px;
 font-size:40px;
@@ -45,12 +45,12 @@ padding:10px;</string>
      <widget class="QLineEdit" name="name">
       <property name="styleSheet">
        <string notr="true">width:200px;
-background-color:darkorange;
-color:black;
+background-color:#c9ff83;
+color:darkgreen;
 font-family:Rokh;
 padding:8px;
 border-radius:10px;
-border:2px solid black;</string>
+border:2px solid green;</string>
       </property>
       <property name="placeholderText">
        <string>نام و نام خانوادگی</string>
@@ -61,12 +61,12 @@ border:2px solid black;</string>
      <widget class="QLineEdit" name="username">
       <property name="styleSheet">
        <string notr="true">width:200px;
-background-color:darkorange;
-color:black;
+background-color:#c9ff83;
+color:darkgreen;
 font-family:Rokh;
 padding:8px;
 border-radius:10px;
-border:2px solid black;</string>
+border:2px solid green;</string>
       </property>
       <property name="text">
        <string/>
@@ -80,12 +80,12 @@ border:2px solid black;</string>
      <widget class="QLineEdit" name="email">
       <property name="styleSheet">
        <string notr="true">width:200px;
-background-color:darkorange;
-color:black;
+background-color:#c9ff83;
+color:darkgreen;
 font-family:Rokh;
 padding:8px;
 border-radius:10px;
-border:2px solid black;</string>
+border:2px solid green;</string>
       </property>
       <property name="placeholderText">
        <string>ایمیل</string>
@@ -96,12 +96,12 @@ border:2px solid black;</string>
      <widget class="QLineEdit" name="password">
       <property name="styleSheet">
        <string notr="true">width:200px;
-background-color:darkorange;
-color:black;
+background-color:#c9ff83;
+color:darkgreen;
 font-family:Rokh;
 padding:8px;
 border-radius:10px;
-border:2px solid black;</string>
+border:2px solid green;</string>
       </property>
       <property name="placeholderText">
        <string>رمز عبور</string>
@@ -112,12 +112,12 @@ border:2px solid black;</string>
      <widget class="QLineEdit" name="password2">
       <property name="styleSheet">
        <string notr="true">width:200px;
-background-color:darkorange;
-color:black;
+background-color:#c9ff83;
+color:darkgreen;
 font-family:Rokh;
 padding:8px;
 border-radius:10px;
-border:2px solid black;</string>
+border:2px solid green;</string>
       </property>
       <property name="placeholderText">
        <string>تکرار رمز عبور</string>
@@ -133,8 +133,8 @@ border:2px solid black;</string>
        <string notr="true">padding:10px;
 background-color: qlineargradient(
     x1:0, y1:0, x2:1, y2:0,
-    stop:0 #16BFFD,
-    stop:1 #CB3066
+    stop:0 #4AC29A,
+    stop:1 #BDFFF3
 );
 
 color:black;
@@ -152,19 +152,14 @@ border-radius:10px;
   <widget class="QFrame" name="frame">
    <property name="geometry">
     <rect>
-     <x>-1</x>
-     <y>-21</y>
-     <width>571</width>
-     <height>511</height>
+     <x>-90</x>
+     <y>-10</y>
+     <width>890</width>
+     <height>510</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: qlineargradient(
-    x1:0, y1:0, x2:1, y2:0,
-    stop:0 #000,
-    stop:1 #ff0f7b
-);
-</string>
+    <string notr="true">border-image: url(:/new/images/bgsignin.jpg) 0 0 0 0 stretch stretch;</string>
    </property>
    <property name="frameShape">
     <enum>QFrame::Shape::StyledPanel</enum>
@@ -172,32 +167,33 @@ border-radius:10px;
    <property name="frameShadow">
     <enum>QFrame::Shadow::Raised</enum>
    </property>
-   <widget class="QPushButton" name="backbtn">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>30</y>
-      <width>71</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="cursor">
-     <cursorShape>PointingHandCursor</cursorShape>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">padding:10px;
-background-color:#9c27b0;
+  </widget>
+  <widget class="QPushButton" name="backbtn">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>30</y>
+     <width>71</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">padding:10px;
+background-color:lightgreen;
 color:#1d2427;
 font-family:Rokh;
 border-radius:10px;</string>
-    </property>
-    <property name="text">
-     <string>بازگشت</string>
-    </property>
-   </widget>
+   </property>
+   <property name="text">
+    <string>بازگشت</string>
+   </property>
   </widget>
   <zorder>frame</zorder>
   <zorder>verticalLayoutWidget</zorder>
+  <zorder>backbtn</zorder>
  </widget>
  <resources/>
  <connections/>

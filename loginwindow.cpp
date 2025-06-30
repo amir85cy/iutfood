@@ -5,13 +5,14 @@
 #include "loginwindow.h"
 #include "ui_loginwindow.h"
 #include "iutfood_firstpage.h"
-
+#include "firstpage.h"
 
 LoginWindow::LoginWindow(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::LoginWindow)
 {
     ui->setupUi(this);
+    this->setFixedSize(800, 500);
     connect(ui->backbtn, &QPushButton::clicked, this, [=]() {
         IUTFood *firstwin = new IUTFood();
         firstwin->setAttribute(Qt::WA_DeleteOnClose);
@@ -48,6 +49,11 @@ LoginWindow::LoginWindow(QWidget *parent)
             if(status == 2){
                 QMessageBox::information(this, "موفق", "ورود  رستوراندار موفقیت‌آمیز بود!");
             }
+            firstpage *first=new firstpage();
+            first->setAttribute(Qt::WA_DeleteOnClose);  // Set auto-delete
+            first->show();
+            this->close();
+
         } else {
             errormsg("نام کاربری یا رمز عبور اشتباه است !");
         }

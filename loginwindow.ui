@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>657</width>
-    <height>427</height>
+    <width>800</width>
+    <height>500</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,8 +16,8 @@
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>150</x>
-     <y>30</y>
+     <x>420</x>
+     <y>80</y>
      <width>366</width>
      <height>353</height>
     </rect>
@@ -29,10 +29,10 @@
     <item>
      <widget class="QLabel" name="loginlbl">
       <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
+       <cursorShape>ArrowCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">color:black;
+       <string notr="true">color:#f1a91d;
 font-family:Rokh;
 border-radius:10px;
 font-size:40px;
@@ -65,16 +65,16 @@ text-align:center;</string>
     <item>
      <widget class="QLineEdit" name="username">
       <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
+       <cursorShape>IBeamCursor</cursorShape>
       </property>
       <property name="styleSheet">
        <string notr="true">width:200px;
-background-color:black;
-color:orange;
+background-color:#9d0b0b;
+color:#f1a91d;
 font-family:Rokh;
 padding:8px;
 border-radius:10px;
-border:2px solid orange;</string>
+border:2px solid #f1a91d;</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -103,16 +103,16 @@ border:2px solid orange;</string>
     <item>
      <widget class="QLineEdit" name="password">
       <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
+       <cursorShape>IBeamCursor</cursorShape>
       </property>
       <property name="styleSheet">
        <string notr="true">width:200px;
-background-color:black;
-color:orange;
+background-color:#9d0b0b;
+color:#f1a91d;
 font-family:Rokh;
 padding:8px;
 border-radius:10px;
-border:2px solid orange;</string>
+border:2px solid #f1a91d;</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -146,9 +146,10 @@ border:2px solid orange;</string>
       <property name="styleSheet">
        <string notr="true">padding:10px;
 background-color:lightgreen;
-color:green;
+color:white;
 font-family:Rokh;
-border-radius:10px;</string>
+border-radius:10px;
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0#f1a91d, stop:1 red);</string>
       </property>
       <property name="text">
        <string>ورود</string>
@@ -176,17 +177,19 @@ border-radius:10px;</string>
   <widget class="QFrame" name="frame">
    <property name="geometry">
     <rect>
-     <x>-20</x>
+     <x>0</x>
      <y>0</y>
-     <width>691</width>
-     <height>431</height>
+     <width>801</width>
+     <height>501</height>
     </rect>
    </property>
    <property name="cursor">
-    <cursorShape>PointingHandCursor</cursorShape>
+    <cursorShape>ArrowCursor</cursorShape>
    </property>
    <property name="styleSheet">
-    <string notr="true"> background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 5, 0, 255), stop:1 rgba(10, 255, 255, 255))</string>
+    <string notr="true">
+
+border-image: url(:/new/images/loginbg.webp);</string>
    </property>
    <property name="frameShape">
     <enum>QFrame::Shape::StyledPanel</enum>
@@ -194,29 +197,33 @@ border-radius:10px;</string>
    <property name="frameShadow">
     <enum>QFrame::Shadow::Raised</enum>
    </property>
-   <widget class="QPushButton" name="backbtn">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>20</y>
-      <width>71</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">padding:10px;
-background-color:#df3079;
+  </widget>
+  <widget class="QPushButton" name="backbtn">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>10</y>
+     <width>71</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">padding:10px;
+background-color:#f1a91d;
 color:#1d2427;
 font-family:Rokh;
 border-radius:10px;</string>
-    </property>
-    <property name="text">
-     <string>بازگشت</string>
-    </property>
-   </widget>
+   </property>
+   <property name="text">
+    <string>بازگشت</string>
+   </property>
   </widget>
   <zorder>frame</zorder>
   <zorder>verticalLayoutWidget</zorder>
+  <zorder>backbtn</zorder>
  </widget>
  <resources/>
  <connections/>

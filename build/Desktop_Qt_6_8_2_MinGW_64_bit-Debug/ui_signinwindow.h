@@ -39,16 +39,16 @@ public:
     {
         if (Signinwindow->objectName().isEmpty())
             Signinwindow->setObjectName("Signinwindow");
-        Signinwindow->resize(558, 486);
+        Signinwindow->resize(800, 500);
         verticalLayoutWidget = new QWidget(Signinwindow);
         verticalLayoutWidget->setObjectName("verticalLayoutWidget");
-        verticalLayoutWidget->setGeometry(QRect(170, 20, 222, 404));
+        verticalLayoutWidget->setGeometry(QRect(100, 30, 222, 404));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout->setObjectName("verticalLayout");
         verticalLayout->setContentsMargins(0, 0, 0, 0);
         signinlbl = new QLabel(verticalLayoutWidget);
         signinlbl->setObjectName("signinlbl");
-        signinlbl->setStyleSheet(QString::fromUtf8("color:white;\n"
+        signinlbl->setStyleSheet(QString::fromUtf8("color:#2f6901;\n"
 "font-family:Rokh;\n"
 "border-radius:10px;\n"
 "font-size:40px;\n"
@@ -61,60 +61,60 @@ public:
         name = new QLineEdit(verticalLayoutWidget);
         name->setObjectName("name");
         name->setStyleSheet(QString::fromUtf8("width:200px;\n"
-"background-color:darkorange;\n"
-"color:black;\n"
+"background-color:#c9ff83;\n"
+"color:darkgreen;\n"
 "font-family:Rokh;\n"
 "padding:8px;\n"
 "border-radius:10px;\n"
-"border:2px solid black;"));
+"border:2px solid green;"));
 
         verticalLayout->addWidget(name);
 
         username = new QLineEdit(verticalLayoutWidget);
         username->setObjectName("username");
         username->setStyleSheet(QString::fromUtf8("width:200px;\n"
-"background-color:darkorange;\n"
-"color:black;\n"
+"background-color:#c9ff83;\n"
+"color:darkgreen;\n"
 "font-family:Rokh;\n"
 "padding:8px;\n"
 "border-radius:10px;\n"
-"border:2px solid black;"));
+"border:2px solid green;"));
 
         verticalLayout->addWidget(username);
 
         email = new QLineEdit(verticalLayoutWidget);
         email->setObjectName("email");
         email->setStyleSheet(QString::fromUtf8("width:200px;\n"
-"background-color:darkorange;\n"
-"color:black;\n"
+"background-color:#c9ff83;\n"
+"color:darkgreen;\n"
 "font-family:Rokh;\n"
 "padding:8px;\n"
 "border-radius:10px;\n"
-"border:2px solid black;"));
+"border:2px solid green;"));
 
         verticalLayout->addWidget(email);
 
         password = new QLineEdit(verticalLayoutWidget);
         password->setObjectName("password");
         password->setStyleSheet(QString::fromUtf8("width:200px;\n"
-"background-color:darkorange;\n"
-"color:black;\n"
+"background-color:#c9ff83;\n"
+"color:darkgreen;\n"
 "font-family:Rokh;\n"
 "padding:8px;\n"
 "border-radius:10px;\n"
-"border:2px solid black;"));
+"border:2px solid green;"));
 
         verticalLayout->addWidget(password);
 
         password2 = new QLineEdit(verticalLayoutWidget);
         password2->setObjectName("password2");
         password2->setStyleSheet(QString::fromUtf8("width:200px;\n"
-"background-color:darkorange;\n"
-"color:black;\n"
+"background-color:#c9ff83;\n"
+"color:darkgreen;\n"
 "font-family:Rokh;\n"
 "padding:8px;\n"
 "border-radius:10px;\n"
-"border:2px solid black;"));
+"border:2px solid green;"));
 
         verticalLayout->addWidget(password2);
 
@@ -124,8 +124,8 @@ public:
         submit->setStyleSheet(QString::fromUtf8("padding:10px;\n"
 "background-color: qlineargradient(\n"
 "    x1:0, y1:0, x2:1, y2:0,\n"
-"    stop:0 #16BFFD,\n"
-"    stop:1 #CB3066\n"
+"    stop:0 #4AC29A,\n"
+"    stop:1 #BDFFF3\n"
 ");\n"
 "\n"
 "color:black;\n"
@@ -137,26 +137,22 @@ public:
 
         frame = new QFrame(Signinwindow);
         frame->setObjectName("frame");
-        frame->setGeometry(QRect(-1, -21, 571, 511));
-        frame->setStyleSheet(QString::fromUtf8("background-color: qlineargradient(\n"
-"    x1:0, y1:0, x2:1, y2:0,\n"
-"    stop:0 #000,\n"
-"    stop:1 #ff0f7b\n"
-");\n"
-""));
+        frame->setGeometry(QRect(-90, -10, 890, 510));
+        frame->setStyleSheet(QString::fromUtf8("border-image: url(:/new/images/photo_2025-06-30_01-52-04.jpg) 0 0 0 0 stretch stretch;"));
         frame->setFrameShape(QFrame::Shape::StyledPanel);
         frame->setFrameShadow(QFrame::Shadow::Raised);
-        backbtn = new QPushButton(frame);
+        backbtn = new QPushButton(Signinwindow);
         backbtn->setObjectName("backbtn");
-        backbtn->setGeometry(QRect(10, 30, 71, 41));
+        backbtn->setGeometry(QRect(20, 30, 71, 41));
         backbtn->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
         backbtn->setStyleSheet(QString::fromUtf8("padding:10px;\n"
-"background-color:#9c27b0;\n"
+"background-color:lightgreen;\n"
 "color:#1d2427;\n"
 "font-family:Rokh;\n"
 "border-radius:10px;"));
         frame->raise();
         verticalLayoutWidget->raise();
+        backbtn->raise();
 
         retranslateUi(Signinwindow);
 

@@ -41,18 +41,18 @@ public:
     {
         if (LoginWindow->objectName().isEmpty())
             LoginWindow->setObjectName("LoginWindow");
-        LoginWindow->resize(657, 427);
+        LoginWindow->resize(800, 500);
         verticalLayoutWidget = new QWidget(LoginWindow);
         verticalLayoutWidget->setObjectName("verticalLayoutWidget");
-        verticalLayoutWidget->setGeometry(QRect(150, 30, 366, 353));
+        verticalLayoutWidget->setGeometry(QRect(420, 80, 366, 353));
         verticalLayoutWidget->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout->setObjectName("verticalLayout");
         verticalLayout->setContentsMargins(0, 0, 0, 0);
         loginlbl = new QLabel(verticalLayoutWidget);
         loginlbl->setObjectName("loginlbl");
-        loginlbl->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
-        loginlbl->setStyleSheet(QString::fromUtf8("color:black;\n"
+        loginlbl->setCursor(QCursor(Qt::CursorShape::ArrowCursor));
+        loginlbl->setStyleSheet(QString::fromUtf8("color:#f1a91d;\n"
 "font-family:Rokh;\n"
 "border-radius:10px;\n"
 "font-size:40px;\n"
@@ -67,14 +67,14 @@ public:
 
         username = new QLineEdit(verticalLayoutWidget);
         username->setObjectName("username");
-        username->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
+        username->setCursor(QCursor(Qt::CursorShape::IBeamCursor));
         username->setStyleSheet(QString::fromUtf8("width:200px;\n"
-"background-color:black;\n"
-"color:orange;\n"
+"background-color:#9d0b0b;\n"
+"color:#f1a91d;\n"
 "font-family:Rokh;\n"
 "padding:8px;\n"
 "border-radius:10px;\n"
-"border:2px solid orange;"));
+"border:2px solid #f1a91d;"));
         username->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
         verticalLayout->addWidget(username);
@@ -85,14 +85,14 @@ public:
 
         password = new QLineEdit(verticalLayoutWidget);
         password->setObjectName("password");
-        password->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
+        password->setCursor(QCursor(Qt::CursorShape::IBeamCursor));
         password->setStyleSheet(QString::fromUtf8("width:200px;\n"
-"background-color:black;\n"
-"color:orange;\n"
+"background-color:#9d0b0b;\n"
+"color:#f1a91d;\n"
 "font-family:Rokh;\n"
 "padding:8px;\n"
 "border-radius:10px;\n"
-"border:2px solid orange;"));
+"border:2px solid #f1a91d;"));
         password->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
         verticalLayout->addWidget(password);
@@ -106,9 +106,10 @@ public:
         submit->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
         submit->setStyleSheet(QString::fromUtf8("padding:10px;\n"
 "background-color:lightgreen;\n"
-"color:green;\n"
+"color:white;\n"
 "font-family:Rokh;\n"
-"border-radius:10px;"));
+"border-radius:10px;\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0#f1a91d, stop:1 red);"));
 
         verticalLayout->addWidget(submit);
 
@@ -118,21 +119,25 @@ public:
 
         frame = new QFrame(LoginWindow);
         frame->setObjectName("frame");
-        frame->setGeometry(QRect(-20, 0, 691, 431));
-        frame->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
-        frame->setStyleSheet(QString::fromUtf8(" background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 5, 0, 255), stop:1 rgba(10, 255, 255, 255))"));
+        frame->setGeometry(QRect(0, 0, 801, 501));
+        frame->setCursor(QCursor(Qt::CursorShape::ArrowCursor));
+        frame->setStyleSheet(QString::fromUtf8("\n"
+"\n"
+"border-image: url(:/new/images/loginbg.webp);"));
         frame->setFrameShape(QFrame::Shape::StyledPanel);
         frame->setFrameShadow(QFrame::Shadow::Raised);
-        backbtn = new QPushButton(frame);
+        backbtn = new QPushButton(LoginWindow);
         backbtn->setObjectName("backbtn");
-        backbtn->setGeometry(QRect(40, 20, 71, 41));
+        backbtn->setGeometry(QRect(30, 10, 71, 41));
+        backbtn->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
         backbtn->setStyleSheet(QString::fromUtf8("padding:10px;\n"
-"background-color:#df3079;\n"
+"background-color:#f1a91d;\n"
 "color:#1d2427;\n"
 "font-family:Rokh;\n"
 "border-radius:10px;"));
         frame->raise();
         verticalLayoutWidget->raise();
+        backbtn->raise();
 
         retranslateUi(LoginWindow);
 

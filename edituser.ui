@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Edituser</class>
+ <widget class="QMainWindow" name="Edituser">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>500</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Edituser</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>510</x>
+      <y>-10</y>
+      <width>201</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Morabba</family>
+      <pointsize>20</pointsize>
+      <italic>false</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 0, 0);
+font: 700 20pt &quot;Morabba&quot;;</string>
+    </property>
+    <property name="text">
+     <string>لیست کاربران</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>-10</x>
+      <y>-10</y>
+      <width>811</width>
+      <height>511</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/new/images/edituserbg.png);
+
+</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Shape::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Shadow::Raised</enum>
+    </property>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>80</y>
+      <width>211</width>
+      <height>225</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QPushButton" name="deletebtn">
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #ef3b36, stop:1 #ffffff);
+color: rgb(0, 0, 0);
+padding:10px;
+font: 9pt &quot;Rokh&quot;;
+border:0px solid;
+border-radius:10px</string>
+       </property>
+       <property name="text">
+        <string>حذف کاربر</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="blockbtn">
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #ef3b36, stop:1 #ffffff);
+color: rgb(0, 0, 0);
+padding:10px;
+font: 9pt &quot;Rokh&quot;;
+border:0px solid;
+border-radius:10px</string>
+       </property>
+       <property name="text">
+        <string>بلاک/آنبلاک کردن کاربر</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="viewbtn">
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #ef3b36, stop:1 #ffffff);
+color: rgb(0, 0, 0);
+padding:10px;
+font: 9pt &quot;Rokh&quot;;
+border:0px solid;
+border-radius:10px</string>
+       </property>
+       <property name="text">
+        <string>مشاهده کاربر</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="editrolebtn">
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #ef3b36, stop:1 #ffffff);
+color: rgb(0, 0, 0);
+padding:10px;
+font: 9pt &quot;Rokh&quot;;
+border:0px solid;
+border-radius:10px</string>
+       </property>
+       <property name="text">
+        <string>تغییر نقش به ادمین</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QListWidget" name="listWidget">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>60</y>
+      <width>281</width>
+      <height>411</height>
+     </rect>
+    </property>
+    <property name="cursor" stdset="0">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/new/images/listbg.jpg);
+
+border-radius:10px;</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>بیتا</string>
+     </property>
+     <property name="textAlignment">
+      <set>AlignTrailing|AlignVCenter</set>
+     </property>
+     <property name="icon">
+      <iconset theme="QIcon::ThemeIcon::UserAvailable"/>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>علی</string>
+     </property>
+     <property name="textAlignment">
+      <set>AlignTrailing|AlignVCenter</set>
+     </property>
+     <property name="icon">
+      <iconset theme="QIcon::ThemeIcon::UserAvailable"/>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>فاطمه</string>
+     </property>
+     <property name="textAlignment">
+      <set>AlignTrailing|AlignVCenter</set>
+     </property>
+     <property name="icon">
+      <iconset theme="QIcon::ThemeIcon::UserAvailable"/>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>امیررضا</string>
+     </property>
+     <property name="textAlignment">
+      <set>AlignTrailing|AlignVCenter</set>
+     </property>
+     <property name="icon">
+      <iconset theme="QIcon::ThemeIcon::UserAvailable"/>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>امیرحسین</string>
+     </property>
+     <property name="textAlignment">
+      <set>AlignTrailing|AlignVCenter</set>
+     </property>
+     <property name="icon">
+      <iconset theme="QIcon::ThemeIcon::UserAvailable"/>
+     </property>
+    </item>
+   </widget>
+   <widget class="QPushButton" name="backbtn">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>31</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">padding:2px;
+
+background-color: rgb(255, 39, 79);
+border:0px solid;
+color:black;
+font: 900 9pt &quot;IRANYekanFN&quot;;
+border-radius:5px;</string>
+    </property>
+    <property name="text">
+     <string>&lt;</string>
+    </property>
+   </widget>
+   <zorder>frame</zorder>
+   <zorder>label</zorder>
+   <zorder>verticalLayoutWidget</zorder>
+   <zorder>listWidget</zorder>
+   <zorder>backbtn</zorder>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

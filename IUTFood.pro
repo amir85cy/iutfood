@@ -10,19 +10,31 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    adminpage.cpp \
+    edituser.cpp \
     iutfood_firstpage.cpp \
     loginwindow.cpp \
     main.cpp \
+    reports.cpp \
+    restaurant.cpp \
     signinwindow.cpp
 
 HEADERS += \
+    adminpage.h \
+    edituser.h \
     iutfood_firstpage.h \
     loginwindow.h \
+    reports.h \
+    restaurant.h \
     signinwindow.h
 
 FORMS += \
+    adminpage.ui \
+    edituser.ui \
     iutfood_firstpage.ui \
     loginwindow.ui \
+    reports.ui \
+    restaurant.ui \
     signinwindow.ui
 
 

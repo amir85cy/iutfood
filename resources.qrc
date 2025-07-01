@@ -6,5 +6,12 @@
         <file>loginbg.webp</file>
         <file>firstpagebg.jpg</file>
         <file>bgfirstpage.jpg</file>
+        <file>adminpagebg.jpg</file>
+        <file>adminpagebg.png</file>
+        <file>edituserbg.png</file>
+        <file>listbg.jpg</file>
+        <file>reportsbg.png</file>
+        <file>restaurantbg.png</file>
+        <file>plate.png</file>
     </qresource>
 </RCC>

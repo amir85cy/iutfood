@@ -5,6 +5,7 @@
 #include "loginwindow.h"
 #include "ui_loginwindow.h"
 #include "iutfood_firstpage.h"
+#include "adminpage.h"
 
 
 LoginWindow::LoginWindow(QWidget *parent)
@@ -45,6 +46,10 @@ LoginWindow::LoginWindow(QWidget *parent)
             }
             if(status == 1){
                 QMessageBox::information(this, "موفق", "ورود ادمین موفقیت‌آمیز بود!");
+                Adminpage *adminWin = new Adminpage();
+                adminWin->setAttribute(Qt::WA_DeleteOnClose);
+                adminWin->show();
+                this->close();
             }
             if(status == 2){
                 QMessageBox::information(this, "موفق", "ورود  رستوراندار موفقیت‌آمیز بود!");

@@ -17,6 +17,7 @@ SOURCES += \
     main.cpp \
     reports.cpp \
     restaurant.cpp \
+    restaurateurpage.cpp \
     signinwindow.cpp
 
 HEADERS += \
@@ -26,6 +27,7 @@ HEADERS += \
     loginwindow.h \
     reports.h \
     restaurant.h \
+    restaurateurpage.h \
     signinwindow.h
 
 FORMS += \
@@ -35,6 +37,7 @@ FORMS += \
     loginwindow.ui \
     reports.ui \
     restaurant.ui \
+    restaurateurpage.ui \
     signinwindow.ui
 
 

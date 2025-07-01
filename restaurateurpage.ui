@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Adminpage</class>
- <widget class="QWidget" name="Adminpage">
+ <class>Restaurateurpage</class>
+ <widget class="QWidget" name="Restaurateurpage">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,17 +11,14 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Admin</string>
+   <string>Form</string>
   </property>
-  <property name="styleSheet">
-   <string notr="true"/>
-  </property>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>190</x>
-     <y>40</y>
-     <width>411</width>
+     <x>130</x>
+     <y>100</y>
+     <width>531</width>
      <height>101</height>
     </rect>
    </property>
@@ -34,107 +31,83 @@ text-align:center;
 background-color:#e6d8bf;</string>
    </property>
    <property name="text">
-    <string>ادمین عزیز خوش آمدید</string>
+    <string>رستوراندار عزیز خوش آمدید</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignmentFlag::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QWidget" name="horizontalLayoutWidget">
+  <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>160</y>
-     <width>781</width>
-     <height>86</height>
+     <x>320</x>
+     <y>240</y>
+     <width>160</width>
+     <height>91</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
+   <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QPushButton" name="gotorsts">
+     <widget class="QPushButton" name="gotoeditmenu">
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
        <string notr="true">padding:10px;
-background-color: qlineargradient(
-    x1:0, y1:0, x2:1, y2:0,
-    stop:0 #0099F7,
-    stop:1 #F11712
-);
-
+border:1px solid black;
+background-color: rgb(0, 170, 255);
 color:black;
-font-family:Rokh;
+font: 900 9pt &quot;Rokh&quot;;
 border-radius:10px;
-padding:20px;
-</string>
+
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #007991, stop:1 #78ffd6);</string>
       </property>
       <property name="text">
-       <string>رستوران ها </string>
+       <string>تغییر منو </string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="gotoedituser">
+     <widget class="QPushButton" name="gotoorders">
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
        <string notr="true">padding:10px;
-background-color: qlineargradient(
-    x1:0, y1:0, x2:1, y2:0,
-    stop:0 #c2e59c,
-    stop:1 #64b3f4
-);
-
+border:1px solid black;
+background-color: rgb(255, 170, 255);
 color:black;
-font-family:Rokh;
+font: 900 9pt &quot;Rokh&quot;;
 border-radius:10px;
-padding:20px;
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #f4c4f3, stop:1 #fc67fa);
+
+
 </string>
       </property>
       <property name="text">
-       <string>مدیریت کاربران</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="gotoreports">
-      <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">padding:10px;
-background-color: qlineargradient(
-    x1:0, y1:0, x2:1, y2:0,
-    stop:0 #834d9b,
-    stop:1 #d04ed6
-);
-
-color:black;
-font-family:Rokh;
-border-radius:10px;
-padding:20px;
-</string>
-      </property>
-      <property name="text">
-       <string>سفارشات و گزارشات</string>
+       <string>سفارشات </string>
       </property>
      </widget>
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="widget" native="true">
+  <widget class="QFrame" name="frame">
    <property name="geometry">
     <rect>
-     <x>-1</x>
-     <y>-1</y>
+     <x>0</x>
+     <y>0</y>
      <width>801</width>
      <height>501</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">border-image: url(:/new/images/adminpagebg.png);</string>
+    <string notr="true">border-image: url(:/new/images/Restaurateurpagebg.jpg);</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Shape::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Shadow::Raised</enum>
    </property>
   </widget>
   <widget class="QPushButton" name="exitbtn">
@@ -165,9 +138,9 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #cb
     <string>خروج از حساب کاربری</string>
    </property>
   </widget>
-  <zorder>widget</zorder>
-  <zorder>label</zorder>
-  <zorder>horizontalLayoutWidget</zorder>
+  <zorder>frame</zorder>
+  <zorder>label_2</zorder>
+  <zorder>verticalLayoutWidget</zorder>
   <zorder>exitbtn</zorder>
  </widget>
  <resources/>

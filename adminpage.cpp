@@ -1,8 +1,11 @@
 #include "adminpage.h"
+#include "iutfood_firstpage.h"
 #include "restaurant.h"
 #include "ui_adminpage.h"
 #include "edituser.h"
 #include "reports.h"
+
+#include <QMessageBox>
 
 Adminpage::Adminpage(QWidget *parent)
     : QWidget(parent)
@@ -26,6 +29,21 @@ Adminpage::Adminpage(QWidget *parent)
         restaurantwin->setAttribute(Qt::WA_DeleteOnClose);
         restaurantwin->show();
         this->close();
+    });
+    connect(ui->exitbtn, &QPushButton::clicked, this, [=]() {
+        int confirm = QMessageBox::question(
+            this,
+            "خروج",
+            "آیا مطمئن هستید که می‌خواهید خارج شوید؟",
+            QMessageBox::Yes | QMessageBox::No
+            );
+
+        if (confirm == QMessageBox::Yes) {
+            IUTFood *firstwin = new IUTFood();
+            firstwin->setAttribute(Qt::WA_DeleteOnClose);
+            firstwin->show();
+            this->close();
+        }
     });
 }
 

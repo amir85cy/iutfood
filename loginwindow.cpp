@@ -3,6 +3,7 @@
 #include <QSqlError>
 #include <QMessageBox>
 #include "loginwindow.h"
+#include "restaurateurpage.h"
 #include "ui_loginwindow.h"
 #include "iutfood_firstpage.h"
 #include "adminpage.h"
@@ -53,6 +54,10 @@ LoginWindow::LoginWindow(QWidget *parent)
             }
             if(status == 2){
                 QMessageBox::information(this, "موفق", "ورود  رستوراندار موفقیت‌آمیز بود!");
+                Restaurateurpage *rstrwin = new Restaurateurpage();
+                rstrwin->setAttribute(Qt::WA_DeleteOnClose);
+                rstrwin->show();
+                this->close();
             }
         } else {
             errormsg("نام کاربری یا رمز عبور اشتباه است !");

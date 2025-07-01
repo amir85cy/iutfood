@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>restaurant</class>
+ <widget class="QWidget" name="restaurant">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>500</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QListWidget" name="listWidget">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>90</y>
+     <width>300</width>
+     <height>400</height>
+    </rect>
+   </property>
+   <property name="cursor" stdset="0">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #6190e8, stop:1 #a7bfe8);
+border:10px;
+border-radius:10px</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="horizontalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>20</y>
+     <width>317</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QPushButton" name="onactivebtn">
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(235, 87, 87);
+border:0px;
+padding:10px;
+border-radius:8px;
+
+font: 300 9pt &quot;iranyekan&quot;;</string>
+      </property>
+      <property name="text">
+       <string>غیرفعال کردن رستوران</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="activebtn">
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(69, 182, 73);
+color: rgb(0, 0, 0);
+border:0px;
+padding:10px;
+border-radius:8px;
+font: 300 9pt &quot;iranyekan&quot;;</string>
+      </property>
+      <property name="text">
+       <string>فعال کردن رستوران</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>-11</x>
+     <y>-11</y>
+     <width>811</width>
+     <height>511</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/new/images/restaurantbg.png);</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Shape::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Shadow::Raised</enum>
+   </property>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>30</y>
+      <width>231</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Rokh</family>
+      <pointsize>15</pointsize>
+      <italic>false</italic>
+      <fontweight>Black</fontweight>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 900 15pt &quot;Rokh&quot;;
+
+color: rgb(0, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string>لیست رستوران ها</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="backbtn">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>31</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(235, 87, 87);
+border:0px;
+padding:10px;
+border-radius:8px;
+
+font: 800 9pt &quot;IRANYekan&quot;;</string>
+   </property>
+   <property name="text">
+    <string>&lt;</string>
+   </property>
+  </widget>
+  <zorder>frame</zorder>
+  <zorder>listWidget</zorder>
+  <zorder>horizontalLayoutWidget</zorder>
+  <zorder>backbtn</zorder>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

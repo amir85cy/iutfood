@@ -9,6 +9,53 @@
 #include <QDir>
 #include <QDebug>
 
+
+void Edituser::deleteSelectedUser() {
+    QListWidgetItem* selectedItem = ui->listWidget->currentItem();
+    if (!selectedItem) {
+        QMessageBox::warning(this, "اخطار", "هیچ کاربری انتخاب نشده!");
+        return;
+    }
+
+    QString line = selectedItem->text();
+    int endRoleIndex = line.indexOf(')');
+    QString username;
+    if (endRoleIndex != -1) {
+        username = line.mid(endRoleIndex + 1);
+    } else {
+        QMessageBox::warning(this, "خطا", "فرمت نامعتبر برای آیتم انتخاب شده.");
+        return;
+    }
+
+    // تأییدیه از کاربر
+    int confirm = QMessageBox::question(this, "حذف کاربر",
+                                        "آیا مطمئن هستید که می‌خواهید این کاربر را حذف کنید؟",
+                                        QMessageBox::Yes | QMessageBox::No);
+    if (confirm != QMessageBox::Yes)
+        return;
+
+    // حذف از دیتابیس
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName("users.db");
+    if (!db.open()) {
+        QMessageBox::critical(this, "خطا", "اتصال به پایگاه‌داده ناموفق بود.");
+        return;
+    }
+
+    QSqlQuery query;
+    query.prepare("DELETE FROM users WHERE username = :username");
+    query.bindValue(":username", username);
+
+    if (!query.exec()) {
+        QMessageBox::critical(this, "خطا", "حذف کاربر با خطا مواجه شد:\n" + query.lastError().text());
+    } else {
+        delete selectedItem; // حذف از لیست ویجت
+        QMessageBox::information(this, "موفق", "کاربر با موفقیت حذف شد!");
+    }
+
+    db.close();
+}
+
 void Edituser::showSelectedUserInfo() {
     // گرفتن آیتم انتخاب‌شده از لیست (مثلاً لیست یوزرنیم‌ها)
     QString selectedUsername;
@@ -228,6 +275,7 @@ Edituser::Edituser(QWidget *parent)
     connect(ui->editrolebtn, &QPushButton::clicked, this, [=]() { changeUserRole(1); });
     connect(ui->blockbtn, &QPushButton::clicked, this, [=]() { changeUserRole(3); });
     connect(ui->viewbtn, &QPushButton::clicked, this, &Edituser::showSelectedUserInfo);
+    connect(ui->deletebtn, &QPushButton::clicked, this, &Edituser::deleteSelectedUser);
 
 }
 

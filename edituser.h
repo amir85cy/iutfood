@@ -24,6 +24,7 @@ private:
 private slots:
     void changeUserRole(int rolenum);
     void showSelectedUserInfo();
+    void deleteSelectedUser();
 
 
 };

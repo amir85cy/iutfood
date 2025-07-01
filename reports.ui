@@ -11,10 +11,10 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Reports</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QListWidget" name="listWidget_2">
+   <widget class="QListWidget" name="reportlist">
     <property name="geometry">
      <rect>
       <x>130</x>
@@ -54,7 +54,7 @@ border-radius:5px;</string>
      <string>&lt;</string>
     </property>
    </widget>
-   <widget class="QListWidget" name="listWidget">
+   <widget class="QListWidget" name="orderlist">
     <property name="geometry">
      <rect>
       <x>400</x>
@@ -153,9 +153,9 @@ font: 900 10pt &quot;Rokh&quot;;</string>
     </property>
    </widget>
    <zorder>frame</zorder>
-   <zorder>listWidget_2</zorder>
+   <zorder>reportlist</zorder>
    <zorder>backbtn</zorder>
-   <zorder>listWidget</zorder>
+   <zorder>orderlist</zorder>
    <zorder>label_2</zorder>
    <zorder>label_3</zorder>
   </widget>

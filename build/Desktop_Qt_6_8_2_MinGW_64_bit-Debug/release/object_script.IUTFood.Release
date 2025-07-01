@@ -1,0 +1,16 @@
+release/adminpage.o
+release/customerpage.o
+release/firstpage.o
+release/iutfood_firstpage.o
+release/loginwindow.o
+release/main.o
+release/ownerpage.o
+release/signinwindow.o
+release/qrc_resources.o
+release/moc_adminpage.o
+release/moc_customerpage.o
+release/moc_firstpage.o
+release/moc_iutfood_firstpage.o
+release/moc_loginwindow.o
+release/moc_ownerpage.o
+release/moc_signinwindow.o

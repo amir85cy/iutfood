@@ -1,0 +1,16 @@
+debug/adminpage.o
+debug/customerpage.o
+debug/firstpage.o
+debug/iutfood_firstpage.o
+debug/loginwindow.o
+debug/main.o
+debug/ownerpage.o
+debug/signinwindow.o
+debug/qrc_resources.o
+debug/moc_adminpage.o
+debug/moc_customerpage.o
+debug/moc_firstpage.o
+debug/moc_iutfood_firstpage.o
+debug/moc_loginwindow.o
+debug/moc_ownerpage.o
+debug/moc_signinwindow.o

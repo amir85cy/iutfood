@@ -6,7 +6,7 @@
 namespace Ui {
 class LoginWindow;
 }
-void errormsg(const QString &matn);
+
 class LoginWindow : public QWidget
 {
     Q_OBJECT
@@ -18,6 +18,5 @@ public:
 private:
     Ui::LoginWindow *ui;
 };
-
 
 #endif // LOGINWINDOW_H

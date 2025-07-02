@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>peygiri</class>
+ <widget class="QWidget" name="peygiri">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>500</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>520</x>
+     <y>100</y>
+     <width>131</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:rgb(85, 170, 255);
+color: rgb(0, 0, 0);
+border-radius:8px;
+font: 300 9pt &quot;IRANYekan&quot;;</string>
+   </property>
+   <property name="text">
+    <string>وضعیت سفارش</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignmentFlag::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>110</y>
+     <width>151</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(85, 255, 127);
+color: rgb(0, 0, 0);
+border-radius:8px;
+font: 900 9pt &quot;Rokh&quot;;</string>
+   </property>
+   <property name="text">
+    <string>✅تحویل گرفتم</string>
+   </property>
+  </widget>
+  <widget class="QPlainTextEdit" name="plainTextEdit">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>220</y>
+     <width>301</width>
+     <height>221</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(0, 0, 0);
+
+background-color: rgb(0, 0, 0);</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>440</y>
+     <width>151</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(85, 255, 127);
+color: rgb(0, 0, 0);
+font: 900 9pt &quot;Rokh&quot;;
+border:0px solid;</string>
+   </property>
+   <property name="text">
+    <string>✅ارسال نظر</string>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="spinBox">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>440</y>
+     <width>151</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:rgb(65, 65, 65) ;
+color: rgb(0, 0, 0);
+
+
+color: rgb(255, 255, 255);</string>
+   </property>
+  </widget>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>-10</x>
+     <y>-10</y>
+     <width>811</width>
+     <height>511</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/new/images/peygiribg.jpg);</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Shape::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Shadow::Raised</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>390</x>
+     <y>100</y>
+     <width>131</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:rgb(255, 85, 127);
+color: rgb(0, 0, 0);
+border-radius:8px;
+font: 300 9pt &quot;IRANYekan&quot;;
+</string>
+   </property>
+   <property name="text">
+    <string>وضعیت سفارش</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignmentFlag::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="Line" name="line">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>200</y>
+     <width>801</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Orientation::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="backbtn">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>31</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">padding:2px;
+
+background-color: rgb(255, 39, 79);
+border:0px solid;
+color:black;
+font: 900 9pt &quot;IRANYekanFN&quot;;
+border-radius:5px;</string>
+   </property>
+   <property name="text">
+    <string>&lt;</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>9</y>
+     <width>251</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(85, 255, 255);
+
+
+color: rgb(0, 0, 0);
+border-radius:20px;
+
+font: 900 19pt &quot;Rokh&quot;;
+padding:10px;</string>
+   </property>
+   <property name="text">
+    <string>پیگیری سفارش</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignmentFlag::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>540</x>
+     <y>300</y>
+     <width>251</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 127);
+
+
+color: rgb(0, 0, 0);
+border-radius:20px;
+
+font: 900 19pt &quot;Rokh&quot;;
+padding:10px;</string>
+   </property>
+   <property name="text">
+    <string>ارسال نظر</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignmentFlag::AlignCenter</set>
+   </property>
+  </widget>
+  <zorder>frame</zorder>
+  <zorder>label</zorder>
+  <zorder>pushButton</zorder>
+  <zorder>plainTextEdit</zorder>
+  <zorder>pushButton_2</zorder>
+  <zorder>spinBox</zorder>
+  <zorder>label_2</zorder>
+  <zorder>line</zorder>
+  <zorder>backbtn</zorder>
+  <zorder>label_3</zorder>
+  <zorder>label_4</zorder>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

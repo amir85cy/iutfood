@@ -11,41 +11,59 @@ CONFIG += c++17
 
 SOURCES += \
     adminpage.cpp \
+    cart.cpp \
     edituser.cpp \
     global.cpp \
+    history.cpp \
     iutfood_firstpage.cpp \
     loginwindow.cpp \
     main.cpp \
     managemenu.cpp \
     orderslist.cpp \
+    panel.cpp \
+    peygiri.cpp \
     reports.cpp \
     restaurant.cpp \
+    restaurantcard.cpp \
     restaurateurpage.cpp \
+    shoppage.cpp \
     signinwindow.cpp
 
 HEADERS += \
     adminpage.h \
+    cart.h \
     edituser.h \
     global.h \
+    history.h \
     iutfood_firstpage.h \
     loginwindow.h \
     managemenu.h \
     orderslist.h \
+    panel.h \
+    peygiri.h \
     reports.h \
     restaurant.h \
+    restaurantcard.h \
     restaurateurpage.h \
+    shoppage.h \
     signinwindow.h
 
 FORMS += \
     adminpage.ui \
+    cart.ui \
     edituser.ui \
+    history.ui \
     iutfood_firstpage.ui \
     loginwindow.ui \
     managemenu.ui \
     orderslist.ui \
+    panel.ui \
+    peygiri.ui \
     reports.ui \
     restaurant.ui \
+    restaurantcard.ui \
     restaurateurpage.ui \
+    shoppage.ui \
     signinwindow.ui
 
 

@@ -17,5 +17,11 @@
         <file>orderlistbg.jpg</file>
         <file>orderlist.jpg</file>
         <file>managemenubg.png</file>
+        <file>usericon.svg</file>
+        <file>carticon.png</file>
+        <file>ordertrackingicon.png</file>
+        <file>historyicon.png</file>
+        <file>historybg.jpg</file>
+        <file>peygiribg.jpg</file>
     </qresource>
 </RCC>

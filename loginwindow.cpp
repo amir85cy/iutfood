@@ -1,4 +1,5 @@
 #include "loginwindow.h"
+#include "shoppage.h"
 #include "ui_loginwindow.h"
 #include "restaurateurpage.h"
 #include "adminpage.h"
@@ -10,6 +11,23 @@
 #include <QMessageBox>
 #include <QDebug>
 
+void LoginWindow::errormsg(const QString &matn) {
+    QMessageBox msg;
+
+    msg.setText(matn);
+    msg.setIcon(QMessageBox::Warning);
+
+
+    msg.setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint);
+
+    QFont font("iranyekan", 12, QFont::Bold);
+    msg.setFont(font);
+    msg.setStyleSheet("QLabel { color: red; padding: 10px; }");
+
+    QPushButton *okBtn = msg.addButton("فهمیدم", QMessageBox::AcceptRole);
+    okBtn->setStyleSheet("padding: 3px 6px; font-family: iranyekan; font-size: 10px;");
+    msg.exec();
+}
 LoginWindow::LoginWindow(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::LoginWindow)
@@ -47,7 +65,10 @@ LoginWindow::LoginWindow(QWidget *parent)
             int status = query.value("status").toInt();
             if (status == 0) {
                 QMessageBox::information(this, "موفق", "ورود موفقیت‌آمیز بود!");
-                // رفتار دلخواه برای کاربر عادی
+                ShopPage *shopWin = new ShopPage();
+                shopWin->setAttribute(Qt::WA_DeleteOnClose);
+                shopWin->show();
+                this->close();
             }
             else if (status == 1) {
                 QMessageBox::information(this, "موفق", "ورود ادمین موفقیت‌آمیز بود!");
@@ -65,11 +86,11 @@ LoginWindow::LoginWindow(QWidget *parent)
                 this->close();
             }
             else if (status == 3) {
-                QMessageBox::warning(this, "خطا", "شما دسترسی ندارید زیرا بلاک شده‌اید!");
+                errormsg("🚫شما دسترسی ندارید زیرا بلاک شده‌اید!!");
             }
         }
         else {
-            QMessageBox::warning(this, "خطا", "نام کاربری یا رمز عبور اشتباه است!");
+            errormsg("نام کاربری یا رمز عبور اشتباه می باشد!");
         }
 
         db.close();

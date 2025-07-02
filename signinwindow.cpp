@@ -5,6 +5,7 @@
 #include "signinwindow.h"
 #include "ui_signinwindow.h"
 #include "iutfood_firstpage.h"
+#include "global.h"
 void successmsg(const QString &text) {
     QMessageBox msg;
     msg.setText(text);
@@ -64,16 +65,6 @@ bool isEmailDuplicate(const QString &email) {
 
     return query.next();  // اگه رکوردی پیدا شد یعنی ایمیل تکراریه
 }
-
-bool isEnglishOnly(const QString &text) {
-    QRegularExpression regex(R"(^[A-Za-z0-9]+$)");
-    return regex.match(text).hasMatch();
-}
-
-bool isValidEmail(const QString &email) {
-    QRegularExpression regex(R"(^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$)");
-    return regex.match(email).hasMatch();
-}
 void errormsg(const QString &matn) {
     QMessageBox msg;
 
@@ -91,6 +82,16 @@ void errormsg(const QString &matn) {
     okBtn->setStyleSheet("padding: 3px 6px; font-family: iranyekan; font-size: 10px;");
     msg.exec();
 }
+bool isEnglishOnly(const QString &text) {
+    QRegularExpression regex(R"(^[A-Za-z0-9]+$)");
+    return regex.match(text).hasMatch();
+}
+
+bool isValidEmail(const QString &email) {
+    QRegularExpression regex(R"(^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$)");
+    return regex.match(email).hasMatch();
+}
+
 
 
 Signinwindow::Signinwindow(QWidget *parent)

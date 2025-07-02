@@ -13,6 +13,7 @@ class LoginWindow : public QWidget
 
 public:
     explicit LoginWindow(QWidget *parent = nullptr);
+    void errormsg(const QString &matn);
     ~LoginWindow();
 
 private:

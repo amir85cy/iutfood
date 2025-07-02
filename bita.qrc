@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>G:/iutfood.webp</file>
+    </qresource>
+    <qresource prefix="/new/prefix2"/>
+    <qresource prefix="/new/prefix3">
+        <file>Screenshot 2025-06-30 012056.png</file>
+    </qresource>
+</RCC>

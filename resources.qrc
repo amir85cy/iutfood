@@ -14,5 +14,8 @@
         <file>restaurantbg.png</file>
         <file>plate.png</file>
         <file>Restaurateurpagebg.jpg</file>
+        <file>orderlistbg.jpg</file>
+        <file>orderlist.jpg</file>
+        <file>managemenubg.png</file>
     </qresource>
 </RCC>

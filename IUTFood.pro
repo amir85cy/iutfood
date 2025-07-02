@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui network
 QT += sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -12,9 +12,12 @@ CONFIG += c++17
 SOURCES += \
     adminpage.cpp \
     edituser.cpp \
+    global.cpp \
     iutfood_firstpage.cpp \
     loginwindow.cpp \
     main.cpp \
+    managemenu.cpp \
+    orderslist.cpp \
     reports.cpp \
     restaurant.cpp \
     restaurateurpage.cpp \
@@ -23,8 +26,11 @@ SOURCES += \
 HEADERS += \
     adminpage.h \
     edituser.h \
+    global.h \
     iutfood_firstpage.h \
     loginwindow.h \
+    managemenu.h \
+    orderslist.h \
     reports.h \
     restaurant.h \
     restaurateurpage.h \
@@ -35,6 +41,8 @@ FORMS += \
     edituser.ui \
     iutfood_firstpage.ui \
     loginwindow.ui \
+    managemenu.ui \
+    orderslist.ui \
     reports.ui \
     restaurant.ui \
     restaurateurpage.ui \

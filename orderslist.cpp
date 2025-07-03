@@ -103,6 +103,7 @@ void orderslist::onReadyRead() {
     itemCustomer->setData(Qt::UserRole, QVariant::fromValue((void*)sock));
     ui->tableWidget->setItem(row, 0, itemCustomer);
 
+
     QString foodCount = QString("%1 × %2").arg(count).arg(foodName);
     ui->tableWidget->setItem(row, 1, new QTableWidgetItem(foodCount));
     ui->tableWidget->setItem(row, 2, new QTableWidgetItem("⏳ در انتظار بررسی"));

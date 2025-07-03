@@ -174,14 +174,21 @@ border-radius:5px;</string>
    <widget class="QPushButton" name="confirmbtn">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>460</y>
-      <width>101</width>
-      <height>29</height>
+      <x>280</x>
+      <y>448</y>
+      <width>121</width>
+      <height>51</height>
      </rect>
     </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
     <property name="styleSheet">
-     <string notr="true">font: 900 9pt &quot;Rokh&quot;;</string>
+     <string notr="true">font: 900 9pt &quot;Rokh&quot;;
+
+background-color: rgb(85, 255, 127);
+color:black;
+border:0px;</string>
     </property>
     <property name="text">
      <string>ثبت سفارش </string>
@@ -196,8 +203,13 @@ border-radius:5px;</string>
       <height>29</height>
      </rect>
     </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
     <property name="styleSheet">
-     <string notr="true">font: 900 9pt &quot;Rokh&quot;;</string>
+     <string notr="true">font: 900 9pt &quot;Rokh&quot;;
+background-color:red;
+color:black;</string>
     </property>
     <property name="text">
      <string>حذف از سبد خرید</string>

@@ -1,7 +1,9 @@
+// cart.h
 #ifndef CART_H
 #define CART_H
 
 #include <QWidget>
+#include <QTcpSocket>
 
 namespace Ui {
 class cart;
@@ -17,6 +19,12 @@ public:
 
 private:
     Ui::cart *ui;
+    void loadCartItems(const QString &filename);
+    void updateTotalPrice();
+    void removeSelectedItem();
+    void updateCartFile(const QString &filename);
+    QTcpSocket* socket;
+
 };
 
 #endif // CART_H

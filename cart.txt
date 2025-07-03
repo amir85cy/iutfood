@@ -1,0 +1,2 @@
+Pizza,IUT Food,2,15000
+Burger,IUT Food,1,10000

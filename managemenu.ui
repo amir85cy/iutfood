@@ -101,6 +101,26 @@ height:20px;</string>
         </item>
         <item>
          <property name="text">
+          <string>نوشیدنی</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>خورشت</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>ایرانی </string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>فرنگی</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
           <string>سنتی</string>
          </property>
         </item>

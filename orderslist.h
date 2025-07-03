@@ -28,6 +28,7 @@ private:
     QTcpServer* server;
     QList<QTcpSocket*> clientSockets;
     int selectedRow = -1;
+    void sendStatusToClient(int row, const QString &message);
 };
 
 #endif // ORDERLIST_H

@@ -31,7 +31,7 @@ void restaurant::changestatus(int newstst) {
 
     // باز کردن دیتابیس صحیح
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("restaurant2.db");
+    db.setDatabaseName("restaurant.db");
 
     if (!db.open()) {
         QMessageBox::critical(this, "خطا", "اتصال به پایگاه‌داده ناموفق بود.");
@@ -82,7 +82,7 @@ void restaurant::changestatus(int newstst) {
 
 void restaurant::loadRestaurantsFromDatabase() {
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("restaurant2.db");
+    db.setDatabaseName("restaurant.db");
     qDebug() << "DB Path: " << QDir::currentPath() + "/" + db.databaseName();
 
     if (!db.open()) {

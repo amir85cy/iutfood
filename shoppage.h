@@ -19,6 +19,8 @@ private:
     Ui::ShopPage *ui;
 
     void loadRestaurants();
+private slots:
+    void openRestaurantMenu(int restaurantId);
 };
 
 #endif // SHOPPAGE_H

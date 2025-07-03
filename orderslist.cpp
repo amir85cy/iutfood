@@ -1,154 +1,138 @@
 #include "orderslist.h"
+#include "global.h"
 #include "ui_orderslist.h"
 #include "restaurateurpage.h"
 #include <QTableWidgetItem>
-#include <QTcpSocket>
 #include <QDebug>
+#include <QDataStream>
 
 orderslist::orderslist(QWidget *parent)
-    : QWidget(parent)
-    , ui(new Ui::orderslist)
-{
+    : QWidget(parent), ui(new Ui::orderslist) {
     ui->setupUi(this);
     ui->tableWidget->setStyleSheet(R"(
-        QHeaderView::section {
-            background-color: #f0f0f0;
-            border-bottom: 1px solid #aaaaaa;
-            padding: 6px;
-            font-weight: bold;
-            color:black;
-            font-family:iranyekan;
-        }
-        QTableWidget {
-            gridline-color: #aaaaaa;
-            border: 1px solid #aaaaaa;
-            font-family:iranyekan;
-        }
-        QTableWidget::item:selected {
-            background-color: #0066cc;
-            color: white;
-        }
-    )");
+    QHeaderView::section {
+        background-color: #f0f0f0;
+        border-bottom: 1px solid #aaaaaa;
+        padding: 6px;
+        font-weight: bold;
+        color: black;
+        font-family: iranyekan;
+    }
+    QTableWidget {
+        gridline-color: #aaaaaa;
+        border: 1px solid #aaaaaa;
+        font-family: iranyekan;
+    }
+    QTableWidget::item:selected {
+        background-color: #0066cc;
+        color: white;
+    }
+)");
+    ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);
+    ui->tableWidget->setColumnCount(4);
+    ui->tableWidget->setHorizontalHeaderLabels(
+        { "👤 مشتری", "🍽 غذا", "📦 وضعیت", "🔢 کد سفارش" });
+    ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
     connect(ui->backbtn, &QPushButton::clicked, this, [=]() {
-        Restaurateurpage *rsrtwin = new Restaurateurpage();
-        rsrtwin->setAttribute(Qt::WA_DeleteOnClose);
-        rsrtwin->show();
+        auto *win = new Restaurateurpage();
+        win->setAttribute(Qt::WA_DeleteOnClose);
+        win->show();
         this->close();
     });
 
-    // ستون‌ها
-    ui->tableWidget->setColumnCount(3);
-    ui->tableWidget->setHorizontalHeaderLabels(QStringList() << "👤 مشتری" << "🍽 غذا" << "📦 وضعیت");
-    ui->tableWidget->horizontalHeader()->setStretchLastSection(true);
-    ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
+    connect(ui->btnConfirm, &QPushButton::clicked, this, [=]() {
+        if (selectedRow >= 0) sendStatusToClient(selectedRow, "سفارش تأیید شد");
+    });
+    connect(ui->btnStartPreparing, &QPushButton::clicked, this, [=]() {
+        if (selectedRow >= 0) sendStatusToClient(selectedRow, "در حال آماده‌سازی");
+    });
+    connect(ui->btnPreparing, &QPushButton::clicked, this, [=]() {
+        if (selectedRow >= 0) sendStatusToClient(selectedRow, "مرحله پخت");
+    });
+    connect(ui->btnDelivered, &QPushButton::clicked, this, [=]() {
+        if (selectedRow >= 0) sendStatusToClient(selectedRow, "ارسال شد و در راه است");
+    });
 
-    connect(ui->tableWidget, &QTableWidget::cellClicked, this, [=](int row, int) {
+    connect(ui->tableWidget, &QTableWidget::cellClicked, this, [&](int row, int) {
         selectedRow = row;
     });
 
-    // راه‌اندازی سرور
     server = new QTcpServer(this);
     connect(server, &QTcpServer::newConnection, this, &orderslist::onNewConnection);
-
     if (!server->listen(QHostAddress::Any, 12345)) {
-        qDebug() << "❌ Server failed to start!";
+        qDebug() << "[Server] failed to start on port 12345";
     } else {
-        qDebug() << "✅ Server listening on port 12345";
+        qDebug() << "[Server] listening on 12345";
     }
-
-    // دکمه‌های تغییر وضعیت
-    connect(ui->btnConfirm, &QPushButton::clicked, this, [=]() {
-        if (selectedRow >= 0) {
-            ui->tableWidget->setItem(selectedRow, 2, new QTableWidgetItem("📦 سفارش تأیید شد"));
-            sendStatusToClient(selectedRow, "وضعیت سفارش شما: تأیید شد.");
-        }
-    });
-
-    connect(ui->btnStartPreparing, &QPushButton::clicked, this, [=]() {
-        if (selectedRow >= 0) {
-            ui->tableWidget->setItem(selectedRow, 2, new QTableWidgetItem("🍳 در حال آماده‌سازی"));
-            sendStatusToClient(selectedRow, "وضعیت سفارش شما: در حال آماده‌سازی.");
-        }
-    });
-
-    connect(ui->btnPreparing, &QPushButton::clicked, this, [=]() {
-        if (selectedRow >= 0) {
-            ui->tableWidget->setItem(selectedRow, 2, new QTableWidgetItem("🍲 مرحله پخت"));
-            sendStatusToClient(selectedRow, "وضعیت سفارش شما: در مرحله پخت است.");
-        }
-    });
-
-    connect(ui->btnDelivered, &QPushButton::clicked, this, [=]() {
-        if (selectedRow >= 0) {
-            ui->tableWidget->setItem(selectedRow, 2, new QTableWidgetItem("✅ ارسال شد"));
-            sendStatusToClient(selectedRow, "وضعیت سفارش شما: ارسال شد و در راه است.");
-        }
-    });
 }
 
 void orderslist::onNewConnection() {
-    QTcpSocket* newClientSocket = server->nextPendingConnection();
-    clientSockets.append(newClientSocket);
-    connect(newClientSocket, &QTcpSocket::readyRead, this, &orderslist::onReadyRead);
-    connect(newClientSocket, &QTcpSocket::disconnected, this, &orderslist::onClientDisconnected);
-    qDebug() << "🔗 مشتری جدید وصل شد. تعداد مشتریان متصل: " << clientSockets.size();
+    auto *sock = server->nextPendingConnection();
+    clientSockets.append(sock);
+    connect(sock, &QTcpSocket::readyRead, this, &orderslist::onReadyRead);
+    connect(sock, &QTcpSocket::disconnected, this, &orderslist::onClientDisconnected);
+    qDebug() << "[Server] client connected, total:" << clientSockets.size();
 }
 
 void orderslist::onReadyRead() {
-    QTcpSocket* senderSocket = qobject_cast<QTcpSocket*>(sender());
-    if (!senderSocket) return;
+    auto *sock = qobject_cast<QTcpSocket*>(sender());
+    if (!sock) return;
 
-    QByteArray data = senderSocket->readAll();
+    QByteArray data = sock->readAll();
     QString text = QString::fromUtf8(data).trimmed();
-    qDebug() << "📥 سفارش جدید: " << text;
+    qDebug() << "[Server] order in:" << text;
 
     QStringList parts = text.split(":");
-    if (parts.size() != 4) return;
+    if (parts.size() != 5) return;
 
-    QString customer = parts[0];            // نام مشتری
-    QString restUsername = parts[1];        // نام کاربری رستوران مقصد
-    QString food = parts[2];                // نام غذا
-    QString count = parts[3];               // تعداد
+    QString clientUsername = parts[0];
+    QString restUsername   = parts[1];
+    QString foodName       = parts[2];
+    int count              = parts[3].toInt();
+    int num                = parts[4].toInt();
 
-    QString currentRestUsername = "rest12"; // مقدار واقعی باید از دیتابیس یا لاگین بیاد
+    if (restUsername != loggedInUsername)
+        return;
 
-    if (restUsername != currentRestUsername)
-        return;  // فقط سفارش‌های مربوط به رستوران فعلی را نمایش بده
+    int row = ui->tableWidget->rowCount();
+    ui->tableWidget->insertRow(row);
 
-    int newRow = ui->tableWidget->rowCount();
-    ui->tableWidget->insertRow(newRow);
+    auto *itemCustomer = new QTableWidgetItem(clientUsername);
+    itemCustomer->setData(Qt::UserRole, QVariant::fromValue((void*)sock));
+    ui->tableWidget->setItem(row, 0, itemCustomer);
 
-    QTableWidgetItem* customerItem = new QTableWidgetItem(customer);
-    customerItem->setData(Qt::UserRole, QVariant::fromValue((void*)senderSocket));
-
-    QTableWidgetItem* foodItem = new QTableWidgetItem(QString("%1 × %2").arg(food, count));
-    QTableWidgetItem* statusItem = new QTableWidgetItem("⏳ در انتظار بررسی");
-
-    ui->tableWidget->setItem(newRow, 0, customerItem);
-    ui->tableWidget->setItem(newRow, 1, foodItem);
-    ui->tableWidget->setItem(newRow, 2, statusItem);
+    QString foodCount = QString("%1 × %2").arg(count).arg(foodName);
+    ui->tableWidget->setItem(row, 1, new QTableWidgetItem(foodCount));
+    ui->tableWidget->setItem(row, 2, new QTableWidgetItem("⏳ در انتظار بررسی"));
+    ui->tableWidget->setItem(row, 3, new QTableWidgetItem(QString::number(num)));
 }
 
-void orderslist::sendStatusToClient(int row, const QString& message) {
-    QTableWidgetItem* customerItem = ui->tableWidget->item(row, 0);
-    if (!customerItem) return;
 
-    QTcpSocket* socket = reinterpret_cast<QTcpSocket*>(customerItem->data(Qt::UserRole).value<void*>());
-    if (socket && socket->state() == QTcpSocket::ConnectedState) {
-        socket->write(message.toUtf8());
-    }
+void orderslist::sendStatusToClient(int row, const QString &status) {
+    auto *itemCustomer = ui->tableWidget->item(row, 0);
+    auto *itemCode = ui->tableWidget->item(row, 3);
+    if (!itemCustomer || !itemCode) return;
+
+    auto *sock = reinterpret_cast<QTcpSocket*>(itemCustomer->data(Qt::UserRole).value<void*>());
+    if (!sock || sock->state() != QAbstractSocket::ConnectedState) return;
+
+    QString msg = QString("%1:%2:%3:%4")
+                      .arg(loggedInUsername, itemCustomer->text(),
+                           itemCode->text(), status);
+    sock->write(msg.toUtf8());
+    sock->flush();
+    ui->tableWidget->setItem(row, 2, new QTableWidgetItem("📦 " + status));
+    qDebug() << "[Server] sent status:" << msg;
 }
 
 void orderslist::onClientDisconnected() {
-    QTcpSocket* senderSocket = qobject_cast<QTcpSocket*>(sender());
-    if (senderSocket) {
-        clientSockets.removeOne(senderSocket);
-        senderSocket->deleteLater();
-        qDebug() << "❌ مشتری قطع شد. تعداد فعلی: " << clientSockets.size();
-    }
+    auto *sock = qobject_cast<QTcpSocket*>(sender());
+    if (!sock) return;
+    clientSockets.removeOne(sock);
+    sock->deleteLater();
+    qDebug() << "[Server] client disconnected, remaining:" << clientSockets.size();
 }
 
 orderslist::~orderslist() {

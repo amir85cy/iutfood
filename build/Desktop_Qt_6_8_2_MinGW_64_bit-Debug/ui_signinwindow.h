@@ -138,7 +138,7 @@ public:
         frame = new QFrame(Signinwindow);
         frame->setObjectName("frame");
         frame->setGeometry(QRect(-90, -10, 890, 510));
-        frame->setStyleSheet(QString::fromUtf8("border-image: url(:/new/images/photo_2025-06-30_01-52-04.jpg) 0 0 0 0 stretch stretch;"));
+        frame->setStyleSheet(QString::fromUtf8("border-image: url(:/new/images/bgsignin.jpg) 0 0 0 0 stretch stretch;"));
         frame->setFrameShape(QFrame::Shape::StyledPanel);
         frame->setFrameShadow(QFrame::Shadow::Raised);
         backbtn = new QPushButton(Signinwindow);

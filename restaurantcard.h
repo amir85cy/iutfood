@@ -19,9 +19,15 @@ public:
     void setAddress(const QString &address);
     void setCategory(const QString &category);
     void setRating(int rating);
+    void setRestaurantId(int id);
+    int getRestaurantId() const;
 
 private:
     Ui::RestaurantCard *ui;
+    int restaurantId = -1;
+signals:
+    void detailButtonClicked(int restaurantId);
+
 };
 
 #endif // RESTAURANTCARD_H

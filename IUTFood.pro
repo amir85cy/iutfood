@@ -25,6 +25,7 @@ SOURCES += \
     reports.cpp \
     restaurant.cpp \
     restaurantcard.cpp \
+    restaurantpage.cpp \
     restaurateurpage.cpp \
     shoppage.cpp \
     signinwindow.cpp
@@ -44,6 +45,7 @@ HEADERS += \
     reports.h \
     restaurant.h \
     restaurantcard.h \
+    restaurantpage.h \
     restaurateurpage.h \
     shoppage.h \
     signinwindow.h
@@ -62,6 +64,7 @@ FORMS += \
     reports.ui \
     restaurant.ui \
     restaurantcard.ui \
+    restaurantpage.ui \
     restaurateurpage.ui \
     shoppage.ui \
     signinwindow.ui

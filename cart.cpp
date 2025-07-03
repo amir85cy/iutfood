@@ -1,6 +1,8 @@
 #include "cart.h"
+#include "peygiri.h"
 #include "shoppage.h"
 #include "ui_cart.h"
+#include "global.h"
 
 #include <QFile>
 #include <QTextStream>
@@ -9,12 +11,24 @@
 #include <QHeaderView>
 #include <QDebug>
 
+#include <QRandomGenerator>
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QSqlError>
+#include <QMessageBox>
+#include <QDebug>
+#include <QStandardItemModel>
+#include <QFile>
+#include <QTextStream>
+#include <QItemSelectionModel>
+
 cart::cart(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::cart)
 {
     ui->setupUi(this);
-    socket = new QTcpSocket(this);
+    socket = globalSocket = new QTcpSocket(nullptr);
+    globalSocket = socket;
     //socket->connectToHost("127.0.0.1", 12345);
     // تنظیم انتخاب سطر کامل
     ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
@@ -35,7 +49,7 @@ cart::cart(QWidget *parent) :
     ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
     // بارگذاری اطلاعات
-    loadCartItems("cart3.txt");
+    loadCartItems("cart.txt");
 
     connect(ui->backbtn, &QPushButton::clicked, this, [=]() {
         ShopPage *shopwin = new ShopPage();
@@ -58,6 +72,7 @@ cart::cart(QWidget *parent) :
         if (reply == QMessageBox::Yes) {
             ui->tableWidget->removeRow(row);
             updateTotalPrice();
+            updateCartFile("cart.txt");
         }
     });
     connect(ui->confirmbtn, &QPushButton::clicked, this, [=]() {
@@ -81,10 +96,35 @@ cart::cart(QWidget *parent) :
             int count = countStr.toInt();
             int price = priceStr.toInt();
             int total = count * price;
+            qDebug()<<ui->tableWidget->item(row, 1)->text();
+            QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE", "RestInfoConnection");
+            db.setDatabaseName("restaurant.db");
 
+            if (!db.open()) {
+                qDebug() << "Database Error:" << db.lastError().text();
+                QMessageBox::critical(this, "خطا", "اتصال به دیتابیس برقرار نشد.");
+                return;
+            }
+
+            QSqlQuery query(db);
+            query.prepare("SELECT username FROM restaurant WHERE  name = :name");
+            query.bindValue(":name", restName);
+            if (!query.exec()) {
+                qDebug() << "Query Error:" << query.lastError().text();
+                QMessageBox::critical(this, "خطا", "خواندن اطلاعات رستوران با مشکل مواجه شد.");
+                return;
+            }
+            QString destrestusername;
+            if (query.next()) {
+                destrestusername = query.value("username").toString();
+            } else {
+                QMessageBox::warning(this, "یافت نشد", "رستورانی با این ID پیدا نشد.");
+            }
+
+            db.close();
             // مقدار تستی یا از دیتابیس: نام کاربر و نام کاربری رستوران
-            QString clientUsername = "clientUser456";
-            QString restUsername = "rest12";
+            QString clientUsername = loggedInUsername;
+            QString restUsername = destrestusername;
 
             // اتصال به سرور (در صورت نیاز)
             if (socket->state() != QAbstractSocket::ConnectedState) {
@@ -96,13 +136,20 @@ cart::cart(QWidget *parent) :
             }
 
             // ارسال پیام به سرور
-            QString message = QString("%1:%2:%3:%4")
-                                  .arg(clientUsername, restUsername, foodName, QString::number(count));
+            int num = QRandomGenerator::global()->bounded(1000, 10000);
+            QString message = QString("%1:%2:%3:%4:%5")
+                                  .arg(clientUsername, restUsername, foodName, QString::number(count),QString::number(num));
             socket->write(message.toUtf8());
             socket->flush();
         }
 
         QMessageBox::information(this, "ثبت شد", "سفارش‌ها با موفقیت ارسال شدند.");
+        peygiri *peygiriwin = new peygiri();
+        peygiriwin->setAttribute(Qt::WA_DeleteOnClose);
+        peygiriwin->show();
+        qDebug() << "[Client] Moving socket to peygiri window";
+        globalSocket->moveToThread(peygiriwin->thread());
+        this->close();
     });
 
 }
@@ -148,8 +195,18 @@ void cart::loadCartItems(const QString &filename)
         for (int col = 0; col < 4; ++col) {
             QTableWidgetItem *item = new QTableWidgetItem(parts[col]);
             item->setTextAlignment(Qt::AlignCenter);
+
+            if (col == 2) {
+                // فقط ستون تعداد (قابل ویرایش)
+                item->setFlags(item->flags() | Qt::ItemIsEditable);
+            } else {
+                // بقیه ستون‌ها فقط قابل مشاهده
+                item->setFlags(item->flags() & ~Qt::ItemIsEditable);
+            }
+
             ui->tableWidget->setItem(row, col, item);
         }
+
         row++;
     }
 
@@ -187,7 +244,7 @@ void cart::removeSelectedItem()
     }
 
     ui->tableWidget->removeRow(row);
-    updateCartFile("cart3.txt");
+    updateCartFile("cart.txt");
     updateTotalPrice();
 }
 

@@ -26,7 +26,7 @@
     <item>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <widget class="QLabel" name="labeladdress">
+       <widget class="QLabel" name="labeltype">
         <property name="styleSheet">
          <string notr="true">font: 900 9pt &quot;Rokh&quot;;
 color:rgba(200,200,200,200);
@@ -35,7 +35,7 @@ background-color: rgb(0, 0, 127);
 </string>
         </property>
         <property name="text">
-         <string>آدرس رستوران</string>
+         <string>دسته بندی رستوران</string>
         </property>
        </widget>
       </item>
@@ -115,7 +115,7 @@ background-color: rgb(0, 0, 127);</string>
        </layout>
       </item>
       <item>
-       <widget class="QLabel" name="labeltype">
+       <widget class="QLabel" name="labeladdress">
         <property name="styleSheet">
          <string notr="true">font: 900 9pt &quot;Rokh&quot;;
 color:rgba(200,200,200,200);
@@ -124,7 +124,7 @@ background-color: rgb(0, 0, 127);
 </string>
         </property>
         <property name="text">
-         <string>دسته بندی رستوران</string>
+         <string>آدرس رستوران</string>
         </property>
        </widget>
       </item>

@@ -2,6 +2,7 @@
 #define PEYGIRI_H
 
 #include <QWidget>
+#include <QTcpSocket>
 
 namespace Ui {
 class peygiri;
@@ -17,6 +18,10 @@ public:
 
 private:
     Ui::peygiri *ui;
+    QTcpSocket *socket;
+
+private slots:
+    void onReadyRead();
 };
 
 #endif // PEYGIRI_H

@@ -1,9 +1,12 @@
 #include "shoppage.h"
 #include "cart.h"
 #include "history.h"
+#include "iutfood_firstpage.h"
 #include "panel.h"
 #include "peygiri.h"
+#include "restaurantpage.h"
 #include "ui_shoppage.h"
+#include "global.h"
 
 #include <QSqlQuery>
 #include <QSqlError>
@@ -11,7 +14,14 @@
 #include <QDebug>
 
 #include "restaurantcard.h"  // کارت هر رستوران
+void ShopPage::openRestaurantMenu(int restaurantId) // 👈 اینجا هم باید int باشه
+{
+    selectedRestaurantId = restaurantId;
 
+    Restaurantpage *restPage = new Restaurantpage();
+    restPage->show();
+    this->close();
+}
 ShopPage::ShopPage(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::ShopPage)
@@ -24,7 +34,7 @@ ShopPage::ShopPage(QWidget *parent)
         this->close();
     });
     connect(ui->panelbtn, &QPushButton::clicked, this, [=]() {
-        panel *panelwin = new panel();
+        panel *panelwin = new panel(loggedInUsername);
         panelwin->setAttribute(Qt::WA_DeleteOnClose);
         panelwin->show();
         this->close();
@@ -40,6 +50,20 @@ ShopPage::ShopPage(QWidget *parent)
         peygiriwin->setAttribute(Qt::WA_DeleteOnClose);
         peygiriwin->show();
         this->close();
+    });
+    connect(ui->exitbtn, &QPushButton::clicked, this, [=]() {
+        int confirm = QMessageBox::question(
+            this,
+            "خروج",
+            "آیا مطمئن هستید که می‌خواهید خارج شوید؟",
+            QMessageBox::Yes | QMessageBox::No);
+
+        if (confirm == QMessageBox::Yes) {
+            IUTFood *firstwin = new IUTFood();
+            firstwin->setAttribute(Qt::WA_DeleteOnClose);
+            firstwin->show();
+            this->close();
+        }
     });
     // تنظیم آیکون دکمه‌ها
     ui->panelbtn->setIcon(QIcon(":/new/images/usericon.svg"));
@@ -88,7 +112,7 @@ void ShopPage::loadRestaurants()
 {
     // اتصال به دیتابیس
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE", "RestaurantConnection");
-    db.setDatabaseName("restaurant2.db");
+    db.setDatabaseName("restaurant.db");
 
     if (!db.open()) {
         qDebug() << "Database open error:" << db.lastError().text();
@@ -97,7 +121,7 @@ void ShopPage::loadRestaurants()
     }
 
     QSqlQuery query(db);
-    if (!query.exec("SELECT name, address, rate,status FROM restaurant")) {
+    if (!query.exec("SELECT ID,name, address, rate,type FROM restaurant")) {
         qDebug() << "Query error:" << query.lastError().text();
         QMessageBox::critical(this, "خطا", "خطا در خواندن اطلاعات رستوران‌ها");
         return;
@@ -123,7 +147,8 @@ void ShopPage::loadRestaurants()
         QString name = query.value("name").toString();
         QString address = query.value("address").toString();
         int rating = query.value("rate").toInt();
-        QString category = query.value("status").toString();
+        int id = query.value("ID").toInt();
+        QString category = query.value("type").toString();
 
         RestaurantCard *card = new RestaurantCard();
         card->setFixedHeight(250);
@@ -132,7 +157,8 @@ void ShopPage::loadRestaurants()
         card->setAddress(address);
         card->setCategory(category);
         card->setRating(rating);
-
+        card->setRestaurantId(id); // 👈 ست کردن id
+        connect(card, &RestaurantCard::detailButtonClicked, this, &ShopPage::openRestaurantMenu);
         layout->addWidget(card);
     }
 

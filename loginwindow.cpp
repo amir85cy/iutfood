@@ -1,4 +1,5 @@
 #include "loginwindow.h"
+#include "panel.h"
 #include "shoppage.h"
 #include "ui_loginwindow.h"
 #include "restaurateurpage.h"
@@ -66,6 +67,8 @@ LoginWindow::LoginWindow(QWidget *parent)
             if (status == 0) {
                 QMessageBox::information(this, "موفق", "ورود موفقیت‌آمیز بود!");
                 ShopPage *shopWin = new ShopPage();
+                loggedInUsername = inputUsername;
+                panel *p = new panel(loggedInUsername);
                 shopWin->setAttribute(Qt::WA_DeleteOnClose);
                 shopWin->show();
                 this->close();

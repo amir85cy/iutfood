@@ -1,11 +1,24 @@
 #include "restaurantcard.h"
 #include "ui_restaurantcard.h"
 
+void RestaurantCard::setRestaurantId(int id)
+{
+    restaurantId = id;
+}
+
+int RestaurantCard::getRestaurantId() const
+{
+    return restaurantId;
+}
+
 RestaurantCard::RestaurantCard(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::RestaurantCard)
 {
     ui->setupUi(this);
+    connect(ui->detailbtn, &QPushButton::clicked, this, [=]() {
+        emit detailButtonClicked(restaurantId);
+    });
 }
 
 RestaurantCard::~RestaurantCard()

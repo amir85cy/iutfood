@@ -60,12 +60,12 @@ managemenu::managemenu(QWidget *parent)
 
     // اتصال به دیتابیس user.db برای گرفتن نام رستوران
     QSqlDatabase userDb = QSqlDatabase::addDatabase("QSQLITE", "user_connection");
-    userDb.setDatabaseName("users.db");
+    userDb.setDatabaseName("restaurant.db");
 
     QString restaurantName;
     if (userDb.open()) {
         QSqlQuery query(userDb);
-        query.prepare("SELECT name FROM users WHERE username = :username");
+        query.prepare("SELECT name FROM restaurant WHERE username = :username");
         query.bindValue(":username", loggedInUsername);
         if (query.exec() && query.next()) {
             restaurantName = query.value(0).toString();
@@ -115,8 +115,9 @@ managemenu::managemenu(QWidget *parent)
 
     // دریافت غذاهای مربوط به این رستوران
     QSqlQuery foodQuery(foodDb);
-    foodQuery.prepare("SELECT foodName, foodType, price FROM Foods WHERE restaurantUsername = :username");
+    foodQuery.prepare("SELECT foodname, foodtype, price FROM foods WHERE restaurantusername = :username");
     foodQuery.bindValue(":username", loggedInUsername);
+    qDebug()<<loggedInUsername;
 
     if (foodQuery.exec()) {
         while (foodQuery.next()) {
@@ -152,7 +153,7 @@ managemenu::managemenu(QWidget *parent)
 
         QSqlQuery insertQuery(foodDb);
         insertQuery.prepare(R"(
-            INSERT INTO Foods (foodCode, foodName, foodType, restaurantName, restaurantUsername, price, rating)
+            INSERT INTO foods (foodcode, foodname, foodtype, restaurantname, restaurantusername, price, rating)
             VALUES (:code, :name, :type, :rname, :ruser, :price, :rating)
         )");
         insertQuery.bindValue(":code", foodCode);

@@ -17,6 +17,7 @@ public:
 
 private:
     Ui::Restaurateurpage *ui;
+    void loadRestaurants();
 };
 
 #endif // RESTAURATEURPAGE_H

@@ -90,9 +90,9 @@ public:
         frame->setObjectName("frame");
         frame->setGeometry(QRect(-40, 0, 850, 501));
         frame->setStyleSheet(QString::fromUtf8("background-color : qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(25, 25, 255, 255));\n"
-"border-image: url(:/new/images/47603-cute-food-backgrounds-04-830.jpg);\n"
 "\n"
-"border-image: url(:/new/images/hand-drawn-cute-food-frame-background_23-2149602177.jpg);"));
+"\n"
+"border-image: url(:/new/images/bgfirstpage.jpg);"));
         frame->setFrameShape(QFrame::Shape::StyledPanel);
         frame->setFrameShadow(QFrame::Shadow::Raised);
         IUTFood->setCentralWidget(centralwidget);

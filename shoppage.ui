@@ -234,6 +234,31 @@ padding:0px;</string>
    <property name="frameShadow">
     <enum>QFrame::Shadow::Raised</enum>
    </property>
+   <widget class="QPushButton" name="exitbtn">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>80</y>
+      <width>201</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">padding:2px;
+
+background-color: rgb(255, 39, 79);
+border:0px solid;
+color:black;
+font: 900 9pt &quot;IRANYekanFN&quot;;
+border-radius:5px;</string>
+    </property>
+    <property name="text">
+     <string>خروج از حساب کاربری</string>
+    </property>
+   </widget>
   </widget>
   <zorder>frame</zorder>
   <zorder>scrollArea</zorder>

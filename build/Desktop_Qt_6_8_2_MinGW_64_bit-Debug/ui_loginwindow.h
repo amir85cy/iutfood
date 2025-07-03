@@ -56,7 +56,9 @@ public:
 "font-family:Rokh;\n"
 "border-radius:10px;\n"
 "font-size:40px;\n"
-"text-align:center;"));
+"text-align:center;\n"
+"\n"
+""));
         loginlbl->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
         verticalLayout->addWidget(loginlbl);

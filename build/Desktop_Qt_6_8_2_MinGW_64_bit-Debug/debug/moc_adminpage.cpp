@@ -60,7 +60,7 @@ Q_CONSTINIT static const uint qt_meta_data_ZN9AdminpageE[] = {
 };
 
 Q_CONSTINIT const QMetaObject Adminpage::staticMetaObject = { {
-    QMetaObject::SuperData::link<QMainWindow::staticMetaObject>(),
+    QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
     qt_meta_stringdata_ZN9AdminpageE.offsetsAndSizes,
     qt_meta_data_ZN9AdminpageE,
     qt_static_metacall,
@@ -91,12 +91,12 @@ void *Adminpage::qt_metacast(const char *_clname)
     if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_ZN9AdminpageE.stringdata0))
         return static_cast<void*>(this);
-    return QMainWindow::qt_metacast(_clname);
+    return QWidget::qt_metacast(_clname);
 }
 
 int Adminpage::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = QMainWindow::qt_metacall(_c, _id, _a);
+    _id = QWidget::qt_metacall(_c, _id, _a);
     return _id;
 }
 QT_WARNING_POP

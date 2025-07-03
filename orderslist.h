@@ -1,10 +1,10 @@
-#ifndef ORDERLIST_H
-#define ORDERLIST_H
+#ifndef ORDERSLIST_H
+#define ORDERSLIST_H
 
 #include <QWidget>
 #include <QTcpServer>
 #include <QTcpSocket>
-#include <QTableWidgetItem>
+#include <QList>
 
 namespace Ui {
 class orderslist;
@@ -22,13 +22,13 @@ private slots:
     void onNewConnection();
     void onReadyRead();
     void onClientDisconnected();
+    void sendStatusToClient(int row, const QString &status);
 
 private:
     Ui::orderslist *ui;
-    QTcpServer* server;
+    QTcpServer *server;
     QList<QTcpSocket*> clientSockets;
     int selectedRow = -1;
-    void sendStatusToClient(int row, const QString &message);
 };
 
-#endif // ORDERLIST_H
+#endif // ORDERSLIST_H

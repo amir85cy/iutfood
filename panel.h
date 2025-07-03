@@ -12,11 +12,13 @@ class panel : public QWidget
     Q_OBJECT
 
 public:
-    explicit panel(QWidget *parent = nullptr);
+    explicit panel(const QString &username, QWidget *parent = nullptr);
     ~panel();
 
 private:
     Ui::panel *ui;
+
+    QString currentUsername;  // نام کاربری لاگین‌شده برای پیگیری و ثبت در دیتابیس
 };
 
 #endif // PANEL_H

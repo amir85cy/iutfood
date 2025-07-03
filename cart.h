@@ -1,4 +1,3 @@
-// cart.h
 #ifndef CART_H
 #define CART_H
 
@@ -19,12 +18,12 @@ public:
 
 private:
     Ui::cart *ui;
+    QTcpSocket *socket;
+
     void loadCartItems(const QString &filename);
     void updateTotalPrice();
-    void removeSelectedItem();
     void updateCartFile(const QString &filename);
-    QTcpSocket* socket;
-
+    void removeSelectedItem();
 };
 
 #endif // CART_H

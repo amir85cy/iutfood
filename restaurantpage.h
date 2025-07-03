@@ -23,6 +23,7 @@ private:
     void loadData();
 
     QString restaurantusername;
+    void likeSelectedComment();
 };
 
 #endif // RESTAURANTPAGE_H

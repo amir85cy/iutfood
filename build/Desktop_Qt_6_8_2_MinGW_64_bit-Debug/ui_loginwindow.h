@@ -42,6 +42,8 @@ public:
         if (LoginWindow->objectName().isEmpty())
             LoginWindow->setObjectName("LoginWindow");
         LoginWindow->resize(800, 500);
+        LoginWindow->setMinimumSize(QSize(800, 500));
+        LoginWindow->setMaximumSize(QSize(800, 500));
         verticalLayoutWidget = new QWidget(LoginWindow);
         verticalLayoutWidget->setObjectName("verticalLayoutWidget");
         verticalLayoutWidget->setGeometry(QRect(420, 80, 366, 353));

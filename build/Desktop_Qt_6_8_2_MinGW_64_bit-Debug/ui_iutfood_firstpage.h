@@ -37,6 +37,8 @@ public:
         if (IUTFood->objectName().isEmpty())
             IUTFood->setObjectName("IUTFood");
         IUTFood->resize(800, 500);
+        IUTFood->setMinimumSize(QSize(800, 500));
+        IUTFood->setMaximumSize(QSize(800, 500));
         IUTFood->setStyleSheet(QString::fromUtf8(""));
         centralwidget = new QWidget(IUTFood);
         centralwidget->setObjectName("centralwidget");

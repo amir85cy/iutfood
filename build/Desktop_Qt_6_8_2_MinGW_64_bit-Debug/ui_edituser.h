@@ -41,6 +41,8 @@ public:
         if (Edituser->objectName().isEmpty())
             Edituser->setObjectName("Edituser");
         Edituser->resize(800, 500);
+        Edituser->setMinimumSize(QSize(800, 500));
+        Edituser->setMaximumSize(QSize(800, 500));
         Edituser->setStyleSheet(QString::fromUtf8(""));
         centralwidget = new QWidget(Edituser);
         centralwidget->setObjectName("centralwidget");

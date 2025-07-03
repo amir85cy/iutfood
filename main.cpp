@@ -132,10 +132,7 @@ void createcommenttable() {
     )
 )");
 
-    query.exec(R"(
-    INSERT OR IGNORE INTO foods (restaurantusername, username, comment, likes , rating)
-    VALUES ("zxrest", 'amirr', 'بسیار عالی و خوشمزه', '10', 4)
-)");
+
 
 
     db.close();

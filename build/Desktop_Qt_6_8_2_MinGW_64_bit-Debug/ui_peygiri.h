@@ -74,7 +74,9 @@ public:
 "color: rgb(255, 255, 255);"));
         frame = new QFrame(peygiri);
         frame->setObjectName("frame");
-        frame->setGeometry(QRect(-10, -10, 811, 511));
+        frame->setGeometry(QRect(-10, -10, 800, 500));
+        frame->setMinimumSize(QSize(800, 500));
+        frame->setMaximumSize(QSize(800, 500));
         frame->setStyleSheet(QString::fromUtf8("border-image: url(:/new/images/peygiribg.jpg);"));
         frame->setFrameShape(QFrame::Shape::StyledPanel);
         frame->setFrameShadow(QFrame::Shadow::Raised);

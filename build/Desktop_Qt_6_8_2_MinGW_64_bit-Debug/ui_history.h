@@ -33,6 +33,8 @@ public:
         if (history->objectName().isEmpty())
             history->setObjectName("history");
         history->resize(800, 500);
+        history->setMinimumSize(QSize(800, 500));
+        history->setMaximumSize(QSize(800, 500));
         tableWidget = new QTableWidget(history);
         tableWidget->setObjectName("tableWidget");
         tableWidget->setGeometry(QRect(360, 70, 371, 381));

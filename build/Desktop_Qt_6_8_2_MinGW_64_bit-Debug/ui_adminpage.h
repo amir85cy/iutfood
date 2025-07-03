@@ -35,6 +35,8 @@ public:
         if (Adminpage->objectName().isEmpty())
             Adminpage->setObjectName("Adminpage");
         Adminpage->resize(800, 500);
+        Adminpage->setMinimumSize(QSize(800, 500));
+        Adminpage->setMaximumSize(QSize(800, 500));
         Adminpage->setStyleSheet(QString::fromUtf8(""));
         label = new QLabel(Adminpage);
         label->setObjectName("label");

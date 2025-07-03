@@ -20,6 +20,9 @@ public:
 private:
     Ui::Reports *ui;
     void loadUsersFromDatabase();
+    void loadOrdersFromDatabase();
+
+
 
 };
 #endif // REPORTS_H

@@ -40,6 +40,8 @@ public:
         if (Signinwindow->objectName().isEmpty())
             Signinwindow->setObjectName("Signinwindow");
         Signinwindow->resize(800, 500);
+        Signinwindow->setMinimumSize(QSize(800, 500));
+        Signinwindow->setMaximumSize(QSize(800, 500));
         verticalLayoutWidget = new QWidget(Signinwindow);
         verticalLayoutWidget->setObjectName("verticalLayoutWidget");
         verticalLayoutWidget->setGeometry(QRect(100, 30, 222, 404));

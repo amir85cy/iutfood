@@ -141,9 +141,36 @@ cart::cart(QWidget *parent) :
                                   .arg(clientUsername, restUsername, foodName, QString::number(count),QString::number(num));
             socket->write(message.toUtf8());
             socket->flush();
+            QSqlDatabase dbOrders = QSqlDatabase::addDatabase("QSQLITE", "OrdersConnection");
+            dbOrders.setDatabaseName("orders.db");
+
+            if (!dbOrders.open()) {
+                qDebug() << "Database orders.db Error:" << dbOrders.lastError().text();
+            } else {
+                QSqlQuery insertQuery(dbOrders);
+                insertQuery.prepare(R"(
+        INSERT INTO orders (customer_username, restaurant_username, title, total_price)
+        VALUES (:customer, :restaurant, :title, :total)
+    )");
+                insertQuery.bindValue(":customer", clientUsername);
+                insertQuery.bindValue(":restaurant", restUsername);
+                insertQuery.bindValue(":title", foodName);
+                insertQuery.bindValue(":total", total);
+
+                if (!insertQuery.exec()) {
+                    qDebug() << "Insert order failed:" << insertQuery.lastError().text();
+                }
+
+                dbOrders.close();
+            }
+
         }
 
         QMessageBox::information(this, "ثبت شد", "سفارش‌ها با موفقیت ارسال شدند.");
+        QFile cartFile("cart.txt");
+        if (cartFile.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
+            cartFile.close(); // فایل رو فقط باز و بلافاصله می‌بندیم تا خالی بشه
+        }
         peygiri *peygiriwin = new peygiri();
         peygiriwin->setAttribute(Qt::WA_DeleteOnClose);
         peygiriwin->show();

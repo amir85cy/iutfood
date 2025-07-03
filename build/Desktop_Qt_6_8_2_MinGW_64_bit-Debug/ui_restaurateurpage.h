@@ -35,6 +35,8 @@ public:
         if (Restaurateurpage->objectName().isEmpty())
             Restaurateurpage->setObjectName("Restaurateurpage");
         Restaurateurpage->resize(800, 500);
+        Restaurateurpage->setMinimumSize(QSize(800, 500));
+        Restaurateurpage->setMaximumSize(QSize(800, 500));
         label_2 = new QLabel(Restaurateurpage);
         label_2->setObjectName("label_2");
         label_2->setGeometry(QRect(130, 100, 531, 101));

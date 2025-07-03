@@ -56,7 +56,7 @@ Restaurantpage::Restaurantpage(QWidget *parent)
         shopwin->show();
         this->close();
     });
-
+    connect(ui->likebtn, &QPushButton::clicked, this, &Restaurantpage::likeSelectedComment);
     // تنظیم آیکون دکمه‌ها
     ui->panelbtn->setIcon(QIcon(":/new/images/usericon.svg"));
     ui->panelbtn->setIconSize(QSize(32, 32));
@@ -178,6 +178,7 @@ void Restaurantpage::loadData()
     ui->foodstable->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->foodstable->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
+
     dbFoods.close();
     QSqlDatabase::removeDatabase("foods_connection");
 
@@ -284,4 +285,49 @@ void Restaurantpage::addSelectedFoodToCart()
     } else {
         QMessageBox::warning(this, "خطا", "نوشتن در فایل cart.txt ممکن نیست.");
     }
+}
+void Restaurantpage::likeSelectedComment()
+{
+    QItemSelectionModel *selectionModel = ui->commenttable->selectionModel();
+
+    if (!selectionModel->hasSelection()) {
+        QMessageBox::information(this, "توجه", "لطفاً یک کامنت را انتخاب کنید.");
+        return;
+    }
+
+    QModelIndex selectedIndex = selectionModel->selectedRows().first();
+    QString username = ui->commenttable->model()->index(selectedIndex.row(), 0).data().toString();
+
+    // اتصال به دیتابیس
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE", "like_connection");
+    db.setDatabaseName("comments.db");
+
+    if (!db.open()) {
+        QMessageBox::warning(this, "خطا", "باز کردن دیتابیس comments.db ممکن نیست.");
+        return;
+    }
+
+    QSqlQuery query(db);
+    query.prepare(R"(
+        UPDATE comments
+        SET likes = likes + 1
+        WHERE username = :username AND restaurantusername = :restuser
+    )");
+    query.bindValue(":username", username);
+    query.bindValue(":restuser", restaurantusername);
+
+    if (!query.exec()) {
+        QMessageBox::warning(this, "خطا", "لایک کردن با خطا مواجه شد:\n" + query.lastError().text());
+        db.close();
+        QSqlDatabase::removeDatabase("like_connection");
+        return;
+    }
+
+    db.close();
+    QSqlDatabase::removeDatabase("like_connection");
+
+    QMessageBox::information(this, "موفق", "کامنت لایک شد!");
+
+    // دوباره بارگذاری شود
+    loadData();
 }

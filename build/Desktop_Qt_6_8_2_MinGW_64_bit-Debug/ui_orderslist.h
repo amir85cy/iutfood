@@ -35,6 +35,8 @@ public:
         if (orderslist->objectName().isEmpty())
             orderslist->setObjectName("orderslist");
         orderslist->resize(800, 500);
+        orderslist->setMinimumSize(QSize(800, 500));
+        orderslist->setMaximumSize(QSize(800, 500));
         orderslist->setStyleSheet(QString::fromUtf8(""));
         btnConfirm = new QPushButton(orderslist);
         btnConfirm->setObjectName("btnConfirm");

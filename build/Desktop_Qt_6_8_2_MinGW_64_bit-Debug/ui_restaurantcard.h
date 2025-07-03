@@ -47,6 +47,7 @@ public:
         if (RestaurantCard->objectName().isEmpty())
             RestaurantCard->setObjectName("RestaurantCard");
         RestaurantCard->resize(700, 250);
+        RestaurantCard->setMinimumSize(QSize(0, 0));
         horizontalLayoutWidget = new QWidget(RestaurantCard);
         horizontalLayoutWidget->setObjectName("horizontalLayoutWidget");
         horizontalLayoutWidget->setGeometry(QRect(-1, -1, 701, 251));

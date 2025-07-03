@@ -46,6 +46,8 @@ public:
         if (managemenu->objectName().isEmpty())
             managemenu->setObjectName("managemenu");
         managemenu->resize(800, 500);
+        managemenu->setMinimumSize(QSize(800, 500));
+        managemenu->setMaximumSize(QSize(800, 500));
         managemenu->setCursor(QCursor(Qt::CursorShape::ArrowCursor));
         managemenu->setStyleSheet(QString::fromUtf8(""));
         frame = new QFrame(managemenu);

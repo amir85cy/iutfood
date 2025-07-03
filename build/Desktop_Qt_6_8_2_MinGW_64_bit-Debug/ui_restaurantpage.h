@@ -58,6 +58,8 @@ public:
         if (Restaurantpage->objectName().isEmpty())
             Restaurantpage->setObjectName("Restaurantpage");
         Restaurantpage->resize(800, 500);
+        Restaurantpage->setMinimumSize(QSize(800, 500));
+        Restaurantpage->setMaximumSize(QSize(800, 500));
         Restaurantpage->setStyleSheet(QString::fromUtf8(""));
         verticalLayoutWidget_2 = new QWidget(Restaurantpage);
         verticalLayoutWidget_2->setObjectName("verticalLayoutWidget_2");
@@ -145,7 +147,7 @@ public:
 
         label_3 = new QLabel(Restaurantpage);
         label_3->setObjectName("label_3");
-        label_3->setGeometry(QRect(220, 15, 351, 51));
+        label_3->setGeometry(QRect(220, 10, 351, 71));
         label_3->setStyleSheet(QString::fromUtf8("color:black;\n"
 "font-family:Rokh;\n"
 "border-radius:10px;\n"

@@ -48,6 +48,8 @@ public:
         if (ShopPage->objectName().isEmpty())
             ShopPage->setObjectName("ShopPage");
         ShopPage->resize(800, 500);
+        ShopPage->setMinimumSize(QSize(800, 500));
+        ShopPage->setMaximumSize(QSize(800, 500));
         ShopPage->setStyleSheet(QString::fromUtf8(""));
         scrollArea = new QScrollArea(ShopPage);
         scrollArea->setObjectName("scrollArea");

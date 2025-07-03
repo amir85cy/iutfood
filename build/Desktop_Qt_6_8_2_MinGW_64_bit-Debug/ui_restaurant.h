@@ -9,6 +9,7 @@
 #ifndef UI_RESTAURANT_H
 #define UI_RESTAURANT_H
 
+#include <QtCore/QLocale>
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QFrame>
@@ -37,14 +38,19 @@ public:
         if (restaurant->objectName().isEmpty())
             restaurant->setObjectName("restaurant");
         restaurant->resize(800, 500);
+        restaurant->setMinimumSize(QSize(800, 500));
+        restaurant->setMaximumSize(QSize(800, 500));
         restaurant->setCursor(QCursor(Qt::CursorShape::ArrowCursor));
         listWidget = new QListWidget(restaurant);
         listWidget->setObjectName("listWidget");
         listWidget->setGeometry(QRect(50, 90, 300, 400));
         listWidget->viewport()->setProperty("cursor", QVariant(QCursor(Qt::CursorShape::PointingHandCursor)));
+        listWidget->setLayoutDirection(Qt::LayoutDirection::RightToLeft);
         listWidget->setStyleSheet(QString::fromUtf8("background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #6190e8, stop:1 #a7bfe8);\n"
 "border:10px;\n"
 "border-radius:10px"));
+        listWidget->setLocale(QLocale(QLocale::Persian, QLocale::Iran));
+        listWidget->setTextElideMode(Qt::TextElideMode::ElideRight);
         horizontalLayoutWidget = new QWidget(restaurant);
         horizontalLayoutWidget->setObjectName("horizontalLayoutWidget");
         horizontalLayoutWidget->setGeometry(QRect(440, 20, 317, 71));

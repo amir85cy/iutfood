@@ -1,6 +1,7 @@
 #include "peygiri.h"
 #include "ui_peygiri.h"
 #include "global.h"
+#include "shoppage.h"
 #include <QTableWidgetItem>
 #include <QDebug>
 
@@ -19,6 +20,12 @@ peygiri::peygiri(QWidget *parent)
     socket = globalSocket;
 
     connect(socket, &QTcpSocket::readyRead, this, &peygiri::onReadyRead);
+    connect(ui->backbtn, &QPushButton::clicked, this, [=]() {
+        ShopPage *shoppage = new ShopPage();
+        shoppage->setAttribute(Qt::WA_DeleteOnClose);
+        shoppage->show();
+        this->close();
+    });
 }
 
 peygiri::~peygiri() {
